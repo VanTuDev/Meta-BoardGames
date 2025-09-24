@@ -1,0 +1,32 @@
+{
+  "name": "Meta",
+  "short_name": "Meta",
+  "description": "Ứng dụng Meta",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4a90e2",
+  "icons": [
+    {
+      "src": "/imgs/Logo/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/imgs/Logo/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "orientation": "portrait",
+  "lang": "vi-VN",
+  "categories": [
+    "business",
+    "productivity"
+  ],
+  "screenshots": []
+}

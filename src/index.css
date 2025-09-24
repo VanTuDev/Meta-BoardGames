@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* set font mặc định */
+body {
+   @apply font-sans;
+   background-image: url('/imgs/Background/Background.png');
+   background-size: cover;
+   background-repeat: repeat;
+   background-attachment: fixed;
+   background-position: center;
+}
+
+/* heading dùng font khác */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   @apply font-heading;
+}
