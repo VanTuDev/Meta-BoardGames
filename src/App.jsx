@@ -7,6 +7,7 @@ import Carousel from "./sections/Carousel";
 import Products from "./sections/Products";
 import Collections from "./sections/Collections";
 import Blog from "./sections/Blog";
+import ChatWidget from "./components/ChatWidget";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Chat floating widget */}
+      <ChatWidget />
     </div>
   );
 }

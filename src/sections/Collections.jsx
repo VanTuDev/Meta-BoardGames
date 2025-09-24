@@ -28,7 +28,7 @@ const Collections = () => {
    const [activeMarker, setActiveMarker] = useState(null);
 
    return (
-      <section className="relative w-screen mx-[calc(50%-50vw)] px-0 py-12">
+      <section id="collections" className="relative w-screen mx-[calc(50%-50vw)] px-0 py-8 sm:py-12">
          <div className="relative w-full">
             {/* Ảnh nền */}
             <img
@@ -38,11 +38,11 @@ const Collections = () => {
             />
 
             {/* Overlay Title + Button */}
-            <div className="absolute top-28 left-12 text-left">
-               <h2 className="text-7xl font-bold text-white drop-shadow-lg">
+            <div className="absolute top-8 left-4 sm:top-20 sm:left-12 text-left">
+               <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white drop-shadow-lg">
                   BST Signature
                </h2>
-               <button className="mt-6 px-8 py-3 bg-[#5a442a] text-white font-semibold text-lg rounded hover:bg-[#3e2f1e] transition">
+               <button className="mt-4 sm:mt-6 px-6 sm:px-8 py-2.5 sm:py-3 bg-[#5a442a] text-white font-semibold text-base sm:text-lg rounded hover:bg-[#3e2f1e] transition">
                   Khám phá
                </button>
             </div>

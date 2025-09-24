@@ -29,7 +29,7 @@ const Carousel = () => {
                <img
                   src="/imgs/Carousel/CarouselBaner.webp"
                   alt="Banner 1"
-                  className="w-full h-[700px] object-cover"
+                  className="w-full h-[320px] sm:h-[420px] md:h-[600px] lg:h-[700px] object-cover"
                />
             </SwiperSlide>
 
@@ -38,7 +38,7 @@ const Carousel = () => {
                <img
                   src="/imgs/Carousel/CarouselBaner2.webp"
                   alt="Banner 2"
-                  className="w-full h-[700px] object-cover"
+                  className="w-full h-[320px] sm:h-[420px] md:h-[600px] lg:h-[700px] object-cover"
                />
             </SwiperSlide>
          </Swiper>

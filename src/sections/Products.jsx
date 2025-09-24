@@ -65,27 +65,27 @@ const products = [
 
 const Products = () => {
    return (
-      <section className="max-w-7xl mx-auto px-6 py-12">
+      <section id="products" className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
          {/* Title */}
-         <div className="flex justify-between items-center mb-8">
+         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-3">
             <div className="max-w-2xl">
-               <h2 className="text-4xl font-bold text-gray-900 mb-5 ">Sản phẩm nổi bật</h2>
-               <p className="text-gray-500 mt-2 italic">
+               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-5">Sản phẩm nổi bật</h2>
+               <p className="text-gray-500 mt-1 sm:mt-2 italic text-sm sm:text-base">
                   Khám phá những sản phẩm board games yêu thích nhất, nổi tiếng với thiết kế tinh tế,
                   chất liệu bền vững, và trải nghiệm chơi cao cấp.
                </p>
             </div>
-            <a href="#" className="text-sm text-gray-700 hover:underline">
+            <a href="#" className="text-sm text-gray-700 hover:underline self-start sm:self-auto">
                Xem tất cả →
             </a>
          </div>
 
          {/* Product Grid */}
-         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+         <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {products.map((product) => (
                <div
                   key={product.id}
-                  className="group bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden"
+                  className="group bg-white/90 rounded-lg shadow hover:shadow-lg transition overflow-hidden"
                >
                   {/* Product Image */}
                   <div className="relative aspect-[2/3] w-full overflow-hidden">
