@@ -13,7 +13,7 @@ import ChatWidget from "./components/ChatWidget";
 
 function App() {
   return (
-    <div className="font-sans text-gray-900">
+    <div className="font-sans text-gray-900 overflow-x-hidden">
       {/* Banner chạy nền */}
       <PromoBanner />
 

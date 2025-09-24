@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Search, ShoppingCart, Globe, ChevronDown, Menu, X } from "lucide-react";
+import { useI18n } from "../i18n";
 
 const Header = () => {
+   const { t, locale, setLocale } = useI18n();
    const [open, setOpen] = useState(false);
 
    // Khóa cuộn nền khi mở menu
@@ -22,12 +24,12 @@ const Header = () => {
             {/* Left Menu */}
             <nav className="hidden md:flex items-center space-x-6 font-sans text-sm">
                <a href="#products" className="flex items-center hover:text-gray-500 font-bold">
-                  Products <ChevronDown className="w-4 h-4 ml-1" />
+                  {t("components.Header.nav.products")} <ChevronDown className="w-4 h-4 ml-1" />
                </a>
                <a href="#collections" className="flex items-center hover:text-gray-500 font-bold">
-                  Collections <ChevronDown className="w-4 h-4 ml-1" />
+                  {t("components.Header.nav.collections")} <ChevronDown className="w-4 h-4 ml-1" />
                </a>
-               <a href="#about" className="hover:text-gray-500 font-bold">Giới thiệu</a>
+               <a href="#about" className="hover:text-gray-500 font-bold">{t("components.Header.nav.about")}</a>
             </nav>
 
             {/* Logo center */}
@@ -45,10 +47,25 @@ const Header = () => {
                >
                   <Menu className="w-6 h-6" />
                </button>
-               <a href="#" className="hidden md:block hover:text-gray-500 font-bold">Liên hệ</a>
-               <div className="flex items-center space-x-1 cursor-pointer">
-                  <Globe className="w-4 h-4 hover:text-gray-500" />
-                  <span className="hidden md:inline hover:text-gray-500 font-bold">USD</span>
+               <a href="#" className="hidden md:block hover:text-gray-500 font-bold">{t("components.Header.nav.contact")}</a>
+               {/* Locale Switcher */}
+               <div className="flex items-center gap-2">
+                  <button
+                     className={`flex items-center gap-1 px-2 py-1 rounded-sm border ${locale === "vi" ? "border-[#5a442a]" : "border-transparent"}`}
+                     onClick={() => setLocale("vi")}
+                     aria-label="Chuyển tiếng Việt"
+                  >
+                     <img src="https://flagcdn.com/w20/vn.png" alt="VI" className="w-4 h-3" />
+                     <span className="hidden md:inline">VI</span>
+                  </button>
+                  <button
+                     className={`flex items-center gap-1 px-2 py-1 rounded-sm border ${locale === "en" ? "border-[#5a442a]" : "border-transparent"}`}
+                     onClick={() => setLocale("en")}
+                     aria-label="Switch to English"
+                  >
+                     <img src="https://flagcdn.com/w20/us.png" alt="EN" className="w-4 h-3" />
+                     <span className="hidden md:inline">EN</span>
+                  </button>
                </div>
                <Search className="w-5 h-5 cursor-pointer hover:text-gray-500" />
                <ShoppingCart className="w-5 h-5 cursor-pointer hover:text-gray-500" />
@@ -76,9 +93,17 @@ const Header = () => {
                </button>
             </div>
             <nav className="flex flex-col p-4 space-y-3 text-base">
-               <a href="#products" className="py-2 hover:text-gray-600" onClick={closeMenu}>Products</a>
-               <a href="#collections" className="py-2 hover:text-gray-600" onClick={closeMenu}>Collections</a>
-               <a href="#about" className="py-2 hover:text-gray-600" onClick={closeMenu}>Giới thiệu</a>
+               <a href="#products" className="py-2 hover:text-gray-600" onClick={closeMenu}>{t("components.Header.nav.products")}</a>
+               <a href="#collections" className="py-2 hover:text-gray-600" onClick={closeMenu}>{t("components.Header.nav.collections")}</a>
+               <a href="#about" className="py-2 hover:text-gray-600" onClick={closeMenu}>{t("components.Header.nav.about")}</a>
+               <div className="flex gap-3 pt-2">
+                  <button className={`flex items-center gap-1 px-2 py-1 rounded-sm border ${locale === "vi" ? "border-[#5a442a]" : "border-gray-200"}`} onClick={() => setLocale("vi")}>
+                     <img src="https://flagcdn.com/w20/vn.png" alt="VI" className="w-4 h-3" /> VI
+                  </button>
+                  <button className={`flex items-center gap-1 px-2 py-1 rounded-sm border ${locale === "en" ? "border-[#5a442a]" : "border-gray-200"}`} onClick={() => setLocale("en")}>
+                     <img src="https://flagcdn.com/w20/us.png" alt="EN" className="w-4 h-3" /> EN
+                  </button>
+               </div>
             </nav>
          </aside>
       </header>

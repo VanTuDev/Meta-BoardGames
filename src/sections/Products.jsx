@@ -1,4 +1,5 @@
 import React from "react";
+import { useI18n } from "../i18n";
 
 const products = [
    {
@@ -64,19 +65,19 @@ const products = [
 ];
 
 const Products = () => {
+   const { t, locale } = useI18n();
    return (
       <section id="products" className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
          {/* Title */}
          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-3">
             <div className="max-w-2xl">
-               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-5">Sản phẩm nổi bật</h2>
+               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-5">{t("sections.Products.title")}</h2>
                <p className="text-gray-500 mt-1 sm:mt-2 italic text-sm sm:text-base">
-                  Khám phá những sản phẩm board games yêu thích nhất, nổi tiếng với thiết kế tinh tế,
-                  chất liệu bền vững, và trải nghiệm chơi cao cấp.
+                  {t("sections.Products.subtitle")}
                </p>
             </div>
             <a href="#" className="text-sm text-gray-700 hover:underline self-start sm:self-auto">
-               Xem tất cả →
+               {t("sections.Products.viewAll")}
             </a>
          </div>
 
@@ -93,7 +94,7 @@ const Products = () => {
                      <div className="absolute top-2 left-2 flex flex-col gap-1">
                         {product.preorder && (
                            <span className="bg-[#e5d6a3] text-black text-xs font-bold px-2 py-1 rounded">
-                              Pre-order
+                              {t("sections.Products.badge.preorder")}
                            </span>
                         )}
                         {product.badge && product.badge.includes("%") && (
@@ -119,7 +120,7 @@ const Products = () => {
                      {/* Quick Buy button */}
                      <button className="absolute bottom-2 right-2 bg-[#5a442a]  px-4 py-3 rounded opacity-0 group-hover:opacity-100 transition duration-300 text-bold">
                         <b className="text-white text-sm font-normal">
-                           Mua nhanh
+                           {t("sections.Products.quickBuy")}
                         </b>
                      </button>
                   </div>

@@ -1,30 +1,14 @@
 import React, { useState } from "react";
+import { useI18n } from "../i18n";
 
 const markers = [
-   {
-      id: 1,
-      name: "Premium Tournament Chess Set",
-      description:
-         "Bộ cờ Vua thiết kế theo chuẩn FIDE, làm từ gỗ óc chó bền bỉ, đẳng cấp.",
-      position: { top: "65%", left: "75%" },
-   },
-   {
-      id: 2,
-      name: "Mahjong Majestic",
-      description:
-         "Bộ Mahjong thủ công cao cấp, lấy cảm hứng từ kiến trúc Á Đông.",
-      position: { top: "40%", left: "30%" },
-   },
-   {
-      id: 3,
-      name: "Poker Chip Set",
-      description:
-         "Hộp poker gỗ sang trọng, bao gồm chip và phụ kiện thi đấu.",
-      position: { top: "80%", left: "50%" },
-   },
+   { id: 1, position: { top: "65%", left: "75%" } },
+   { id: 2, position: { top: "40%", left: "30%" } },
+   { id: 3, position: { top: "80%", left: "50%" } },
 ];
 
 const Collections = () => {
+   const { t } = useI18n();
    const [activeMarker, setActiveMarker] = useState(null);
 
    return (
@@ -40,10 +24,10 @@ const Collections = () => {
             {/* Overlay Title + Button */}
             <div className="absolute top-8 left-4 sm:top-20 sm:left-12 text-left">
                <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white drop-shadow-lg">
-                  BST Signature
+                  {t("sections.Collections.title")}
                </h2>
                <button className="mt-4 sm:mt-6 px-6 sm:px-8 py-2.5 sm:py-3 bg-[#5a442a] text-white font-semibold text-base sm:text-lg rounded hover:bg-[#3e2f1e] transition">
-                  Khám phá
+                  {t("sections.Collections.cta")}
                </button>
             </div>
 
@@ -92,10 +76,10 @@ const Collections = () => {
                            className="absolute top-16 left-1/2 -translate-x-1/2 w-72 bg-white/90 backdrop-blur-md shadow-lg p-4 rounded-lg z-10 animate-fadeIn transition-opacity duration-300 opacity-80"
                         >
                            <h3 className="font-semibold text-gray-900">
-                              {marker.name}
+                              {t(`sections.Collections.markers.${marker.id - 1}.name`)}
                            </h3>
                            <p className="text-sm text-gray-600 mt-2">
-                              {marker.description}
+                              {t(`sections.Collections.markers.${marker.id - 1}.description`)}
                            </p>
                         </div>
                      )}
