@@ -8,7 +8,7 @@ const blogs = [
       description:
          "Tết Nguyên Đán là dịp để chúng ta bày tỏ sự tri ân và tình cảm với những người thân yêu, đồng nghiệp và đối tác...",
       date: "17 Thg 1, 2024",
-      image: "/imgs/Blogs/blog1.webp",
+      image: "/imgs/Blog/Blog1.webp",
    },
    {
       id: 2,
@@ -16,7 +16,7 @@ const blogs = [
       description:
          "Trò chơi bầu cua tôm cá là một trò chơi truyền thống giải trí phổ biến ở Việt Nam vào các dịp lễ, đặc biệt là Tết Nguyên Đán...",
       date: "15 Thg 1, 2024",
-      image: "/imgs/Blogs/blog2.webp",
+      image: "/imgs/Blog/Blog2.webp",
    },
    {
       id: 3,
@@ -24,7 +24,7 @@ const blogs = [
       description:
          "Ngày Tết là dịp để gia đình, bạn bè và người thân sum họp, chia sẻ niềm vui và ước nguyện cho năm mới...",
       date: "12 Thg 1, 2024",
-      image: "/imgs/Blogs/blog3.webp",
+      image: "/imgs/Blog/Blog3.webp",
    },
 ];
 
@@ -45,13 +45,18 @@ const Blog = () => {
          {/* Blog Grid */}
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogs.map((blog) => (
-               <div key={blog.id} className="flex flex-col">
+               <div
+                  key={blog.id}
+                  className="flex flex-col group cursor-pointer"
+               >
                   {/* Image */}
-                  <img
-                     src={blog.image}
-                     alt={blog.title}
-                     className="w-full h-56 object-cover rounded"
-                  />
+                  <div className="overflow-hidden rounded">
+                     <img
+                        src={blog.image}
+                        alt={blog.title}
+                        className="w-full h-56 object-cover transform transition-transform duration-500 group-hover:scale-105"
+                     />
+                  </div>
 
                   {/* Content */}
                   <div className="mt-4 flex flex-col flex-grow">
