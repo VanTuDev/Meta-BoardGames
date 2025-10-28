@@ -1,26 +1,21 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import PromoBanner from "./components/PromoBanner";
-
-import Carousel from "./sections/Carousel";
-import Products from "./sections/Products";
-import Collections from "./sections/Collections";
-import Blog from "./sections/Blog";
-import Benefits from "./sections/Benefits";
-import MarqueeText from "./sections/MarqueeText";
-import HeroParallax from "./sections/HeroParallax";
-import ChatWidget from "./components/ChatWidget";
+import PromoBanner from "./components/PromoBanner.jsx";
+import Header from "./components/Header.jsx";
+import Carousel from "./sections/Carousel.jsx";
+import Products from "./sections/Products.jsx";
+import Collections from "./sections/Collections.jsx";
+import Benefits from "./sections/Benefits.jsx";
+import MarqueeText from "./sections/MarqueeText.jsx";
+import HeroParallax from "./sections/HeroParallax.jsx";
+import Blog from "./sections/Blog.jsx";
+import Footer from "./components/Footer.jsx";
+import ChatWidget from "./components/ChatWidget.jsx";
 
 function App() {
   return (
     <div className="font-sans text-gray-900 overflow-x-hidden">
-      {/* Banner chạy nền */}
       <PromoBanner />
-
-      {/* Header */}
       <Header />
 
-      {/* Nội dung chính */}
       <main>
         <Carousel />
         <Products />
@@ -31,10 +26,7 @@ function App() {
         <Blog />
       </main>
 
-      {/* Footer */}
       <Footer />
-
-      {/* Chat floating widget */}
       <ChatWidget />
     </div>
   );

@@ -1,8 +1,11 @@
 import React from "react";
 import FadeInSection from "./FadeInSection";
 import HeroParallaxIMG from "../../public/imgs/HeroParallax/FadeInSection.jpg";
+import { useI18n } from "../i18n";
 
 const HeroParallax = () => {
+   const { t } = useI18n();
+
    return (
       <section className="relative w-full h-[80vh] md:h-screen overflow-hidden">
          {/* Background image */}
@@ -18,19 +21,19 @@ const HeroParallax = () => {
          <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
             <FadeInSection>
                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg leading-snug">
-                  Tôn vinh bàn tay & khối óc Việt Nam
+                  {t("sections.HeroParallax.title")}
                </h1>
             </FadeInSection>
 
             <FadeInSection delay={0.3}>
                <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 max-w-xl sm:max-w-2xl mx-auto">
-                  Nơi boardgame gặp gỡ sự tinh hoa thủ công.
+                  {t("sections.HeroParallax.subtitle")}
                </p>
             </FadeInSection>
 
             <FadeInSection delay={0.6}>
                <button className="mt-6 sm:mt-8 px-6 sm:px-8 py-2 sm:py-3 bg-[#5a442a] text-white rounded-lg hover:bg-[#3e2f1e] transition shadow-lg text-sm sm:text-base">
-                  Khám phá ngay
+                  {t("sections.HeroParallax.button")}
                </button>
             </FadeInSection>
          </div>

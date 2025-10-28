@@ -1,0 +1,19 @@
+{
+   "benefits": [
+      {
+         "id": 1,
+         "title": "12-month warranty",
+         "description": "Applies to all Maztermind products. Shop with confidence at the official website."
+      },
+      {
+         "id": 2,
+         "title": "Free shipping",
+         "description": "Nationwide delivery. Free shipping on orders over 1 million VND."
+      },
+      {
+         "id": 3,
+         "title": "Extra 10% discount",
+         "description": "Get a 10% discount code for first-time customers shopping at Maztermind.vn"
+      }
+   ]
+}

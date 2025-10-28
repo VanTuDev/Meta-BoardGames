@@ -8,7 +8,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "sans-serif"],       // font mặc định (body, text)
-        heading: ["Playfair Display", "serif"], // font cho heading
+        heading: ["Merriweather", "serif"], // font cho heading (có tiếng Việt)
       },
       colors: {
         border: "hsl(var(--border))",

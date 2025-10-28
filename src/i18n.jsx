@@ -7,6 +7,10 @@ import viProducts from "./locales/vi/sections/Products.json";
 import enProducts from "./locales/en/sections/Products.json";
 import viCollections from "./locales/vi/sections/Collections.json";
 import enCollections from "./locales/en/sections/Collections.json";
+import viBenefits from "./locales/vi/sections/Benefits.json";
+import enBenefits from "./locales/en/sections/Benefits.json";
+import viHeroParallax from "./locales/vi/sections/HeroParallax.json";
+import enHeroParallax from "./locales/en/sections/HeroParallax.json";
 
 const I18nContext = createContext({
    locale: "vi",
@@ -26,8 +30,8 @@ export const I18nProvider = ({ children }) => {
 
    const messages = useMemo(
       () => ({
-         vi: { components: { PromoBanner: viPromo, Header: viHeader }, sections: { Products: viProducts, Collections: viCollections } },
-         en: { components: { PromoBanner: enPromo, Header: enHeader }, sections: { Products: enProducts, Collections: enCollections } },
+         vi: { components: { PromoBanner: viPromo, Header: viHeader }, sections: { Products: viProducts, Collections: viCollections, Benefits: viBenefits, HeroParallax: viHeroParallax } },
+         en: { components: { PromoBanner: enPromo, Header: enHeader }, sections: { Products: enProducts, Collections: enCollections, Benefits: enBenefits, HeroParallax: enHeroParallax } },
       }),
       []
    );
