@@ -1,0 +1,15 @@
+{
+   "rewrites": [
+      {
+         "source": "/(.*)",
+         "destination": "/index.html"
+      }
+   ],
+   "redirects": [
+      {
+         "source": "/privite-letter",
+         "destination": "/private-letter",
+         "permanent": true
+      }
+   ]
+}

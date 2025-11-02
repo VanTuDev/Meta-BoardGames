@@ -34,8 +34,13 @@ const Header = () => {
 
             {/* Logo center */}
             <div className="font-serif text-xl font-bold tracking-widest">
-               <img src="/imgs/Logo/logo.png" alt="Logo" className="w-20 h-16 md:w-24 md:h-20 object-contain" />
+               <img
+                  src="/imgs/Logo/logo.png"
+                  alt="Logo"
+                  className="w-12 h-10 md:w-16 md:h-14 object-contain"
+               />
             </div>
+
 
             {/* Right Menu */}
             <div className="flex items-center space-x-4 md:space-x-6 text-sm font-sans">

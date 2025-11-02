@@ -1,0 +1,8 @@
+{
+   "title": "Support",
+   "initialMessage": "Hello! How can I help you?",
+   "placeholder": "Type a message...",
+   "openChat": "Open chat",
+   "closeChat": "Close chat",
+   "send": "Send"
+}

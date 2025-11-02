@@ -21,3 +21,14 @@ h5,
 h6 {
    @apply font-heading;
 }
+
+/* Swiper pagination bullets custom style */
+.swiper-pagination-bullet {
+   background: rgba(255, 255, 255, 0.6) !important;
+   opacity: 0.6 !important;
+}
+
+.swiper-pagination-bullet-active {
+   background: white !important;
+   opacity: 1 !important;
+}

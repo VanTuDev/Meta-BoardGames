@@ -1,0 +1,45 @@
+{
+   "newsletter": {
+      "title": "Subscribe",
+      "description": "Get 10% off your first order",
+      "button": "Get 10% Off"
+   },
+   "about": {
+      "title": "About Us",
+      "links": {
+         "intro": "Introduction",
+         "howToPlay": "How to Play",
+         "commitment": "Commitment",
+         "blog": "Blog"
+      }
+   },
+   "follow": {
+      "title": "Follow Us",
+      "links": {
+         "facebook": "Facebook",
+         "instagram": "Instagram",
+         "pinterest": "Pinterest",
+         "youtube": "Youtube"
+      }
+   },
+   "policies": {
+      "title": "Policies",
+      "links": {
+         "return": "Returns",
+         "shipping": "Shipping",
+         "security": "Security",
+         "promotion": "Promotions",
+         "contact": "Contact"
+      }
+   },
+   "company": {
+      "name": "Maztermind Co., Ltd.",
+      "address": "6/10 Cach Mang Thang 8, Ben Thanh Ward, Ho Chi Minh City • Business License 0317015950",
+      "certificate": "Ministry of Industry and Trade Notice"
+   },
+   "bottom": {
+      "copyright": "© 2025 Maztermind. All rights reserved.",
+      "terms": "Terms",
+      "privacy": "Privacy"
+   }
+}

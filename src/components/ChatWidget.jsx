@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
+import { useI18n } from "../i18n";
 
 const ChatWidget = () => {
+   const { t, locale } = useI18n();
    const [open, setOpen] = useState(false);
    const [message, setMessage] = useState("");
    const [messages, setMessages] = useState([
-      { id: 1, sender: "bot", text: "Xin chào! Tôi có thể giúp gì cho bạn?" },
+      { id: 1, sender: "bot", text: t("components.ChatWidget.initialMessage") },
    ]);
+
+   // Cập nhật tin nhắn ban đầu khi đổi ngôn ngữ
+   useEffect(() => {
+      setMessages([
+         { id: 1, sender: "bot", text: t("components.ChatWidget.initialMessage") },
+      ]);
+   }, [locale, t]);
 
    const onSend = () => {
       const text = message.trim();
@@ -20,7 +29,7 @@ const ChatWidget = () => {
          {/* Nút nổi */}
          {!open && (
             <button
-               aria-label="Open chat"
+               aria-label={t("components.ChatWidget.openChat")}
                className="rounded-full bg-[#5a442a] text-white p-4 shadow-lg hover:bg-[#3e2f1e]"
                onClick={() => setOpen(true)}
             >
@@ -32,8 +41,8 @@ const ChatWidget = () => {
          {open && (
             <div className="w-[320px] sm:w-[360px] h-[420px] bg-white shadow-2xl rounded-lg overflow-hidden">
                <div className="flex items-center justify-between px-4 py-3 bg-[#5a442a] text-white">
-                  <span className="font-semibold">Hỗ trợ</span>
-                  <button aria-label="Close chat" onClick={() => setOpen(false)}>
+                  <span className="font-semibold">{t("components.ChatWidget.title")}</span>
+                  <button aria-label={t("components.ChatWidget.closeChat")} onClick={() => setOpen(false)}>
                      <X className="w-5 h-5" />
                   </button>
                </div>
@@ -48,13 +57,14 @@ const ChatWidget = () => {
                   <input
                      value={message}
                      onChange={(e) => setMessage(e.target.value)}
+                     onKeyDown={(e) => e.key === "Enter" && onSend()}
                      className="flex-1 border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-300"
-                     placeholder="Nhập tin nhắn..."
+                     placeholder={t("components.ChatWidget.placeholder")}
                   />
                   <button
                      onClick={onSend}
                      className="bg-[#5a442a] text-white rounded-md p-2 hover:bg-[#3e2f1e]"
-                     aria-label="Send"
+                     aria-label={t("components.ChatWidget.send")}
                   >
                      <Send className="w-4 h-4" />
                   </button>

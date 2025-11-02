@@ -1,0 +1,45 @@
+{
+   "newsletter": {
+      "title": "Đăng ký",
+      "description": "Nhận mã giảm 10% cho đơn đầu tiên",
+      "button": "Giảm 10%"
+   },
+   "about": {
+      "title": "Về chúng tôi",
+      "links": {
+         "intro": "Giới thiệu",
+         "howToPlay": "Cách chơi",
+         "commitment": "Cam kết",
+         "blog": "Blog"
+      }
+   },
+   "follow": {
+      "title": "Theo dõi",
+      "links": {
+         "facebook": "Facebook",
+         "instagram": "Instagram",
+         "pinterest": "Pinterest",
+         "youtube": "Youtube"
+      }
+   },
+   "policies": {
+      "title": "Chính sách",
+      "links": {
+         "return": "Đổi trả",
+         "shipping": "Giao hàng",
+         "security": "Bảo mật",
+         "promotion": "Khuyến mãi",
+         "contact": "Liên hệ"
+      }
+   },
+   "company": {
+      "name": "Công ty TNHH Maztermind",
+      "address": "6/10 Cách Mạng Tháng 8, P.Bến Thành, TP HCM • GPKD 0317015950",
+      "certificate": "Đã thông báo bộ công thương"
+   },
+   "bottom": {
+      "copyright": "© 2025 Maztermind. All rights reserved.",
+      "terms": "Terms",
+      "privacy": "Privacy"
+   }
+}
