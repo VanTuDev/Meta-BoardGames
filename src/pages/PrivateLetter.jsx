@@ -1,110 +1,240 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Button } from "antd";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import "antd/dist/reset.css";
+import "tailwindcss/tailwind.css";
 
 export default function PrivateLetter() {
-   const navigate = useNavigate();
-   const [opened, setOpened] = useState(false);
-   const [music] = useState(new Audio("/nha-nhac-hue.mp3"));
+   const [showCards, setShowCards] = useState([false, false, false, false]);
+   const canvasRef = useRef(null);
 
    useEffect(() => {
-      if (opened) {
-         music.volume = 0.5;
-         music.loop = true;
-         music.play();
-      }
-      return () => music.pause();
-   }, [opened]);
+      // Hiện 4 card lần lượt
+      showCards.forEach((_, i) => {
+         setTimeout(() => {
+            setShowCards((prev) => {
+               const updated = [...prev];
+               updated[i] = true;
+               return updated;
+            });
+         }, i * 4000);
+      });
 
-   const paragraphs = [
-      `Nếu bạn đang đọc những dòng này, hẳn là bạn đã vượt qua bảy chặng hành trình của Huyền Hoàng Box rồi, đúng không nào? 
-    Chúc mừng bạn - người đã kiên nhẫn mở từng cánh cửa, giải từng ẩn số, và dấn bước qua bảy chặng đường đầy kỳ thú.`,
-      `Và giờ đây, khi những manh mối cuối cùng đã hé lộ, hãy để M.ETA cùng bạn bước tiếp một đoạn ngắn nữa thôi…
-    một đoạn đường không còn thử thách, mà chỉ có những câu chuyện được kể bằng hơi thở của thời gian.`,
-      `Ba câu chuyện, ba lát cắt của quá khứ, cùng giao hòa trong một điểm đến - Huế,
-    nơi đất, trời và con người gặp nhau trong vẻ đẹp lặng lẽ mà vĩnh hằng.`,
-      `“Bạn có nghe thấy không? Tiếng trống vang vọng từ xa, như đang mở đầu cho một triều đại mới…”`,
-      `Sau bao năm binh đao và chia cắt, năm 1802, Nguyễn Phúc Ánh – vị chúa cuối cùng của dòng họ Nguyễn ở Đàng Trong,
-    đã đánh bại nhà Tây Sơn, thống nhất giang sơn và lên ngôi, lấy niên hiệu là Gia Long...`,
-      `Triều Nguyễn tồn tại hơn một thế kỷ... Đến năm 1945, khi vua Bảo Đại thoái vị, triều Nguyễn khép lại hành trình hơn 140 năm thăng trầm –
-    để lại sau lưng một giai đoạn đầy dấu ấn trong lịch sử dân tộc.`,
-      `“Triều Nguyễn đã lùi vào dĩ vãng… nhưng Huế vẫn ở đây – trầm mặc, dịu dàng,
-    và vẫn kể lại câu chuyện ấy mỗi ngày, cho những ai chịu lắng nghe.”`,
-      `“Nếu nói triều Nguyễn là một bản trường ca, thì Minh Mạng chính là chương rực rỡ nhất trong bản nhạc ấy.”`,
-      `Vua Minh Mạng (Nguyễn Phúc Đảm) lên ngôi năm 1820... ông là người đã định hình đất nước, quy củ hóa hành chính và giáo dục.`,
-      `Ông không chỉ dựng nên cơ đồ, mà còn để lại một công trình – nơi mà mỗi viên gạch, mỗi con đường đều mang hơi thở của ông.
-    Đó chính là Lăng Minh Mạng – Hiếu Lăng.`,
-      `“Hít một hơi thật sâu nhé… Bạn có cảm nhận thấy không? Không khí nơi đây khác hẳn – yên bình, cân bằng và tĩnh tại.”`,
-      `Lăng Minh Mạng tọa lạc trên núi Cẩm Khê, cách trung tâm Huế khoảng 12 km...
-    Tất cả hòa quyện giữa núi, sông, hồ, cây – như một bức tranh “thiên – địa – nhân hợp nhất”.`,
-      `“Bước vào Lăng Minh Mạng là bước vào một giấc mộng – giấc mộng của một vị vua yêu cái đẹp, yêu sự hài hòa,
-    và tin rằng cái chết không phải là kết thúc, mà là sự trở về.”`,
-      `Vậy là chúng ta đã đến cuối cùng của hành trình rồi đấy.
-    Hành trình của thời gian, của văn hóa, và của những điều khiến Huế mãi mãi là Huyền Hoàng –
-    nơi quá khứ chưa bao giờ thật sự ngủ yên.`,
+      // --- PHÁO HOA TOÀN MÀN HÌNH ---
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+
+      const ctx = canvas.getContext("2d");
+
+      const resizeCanvas = () => {
+         canvas.width = window.innerWidth;
+         canvas.height = window.innerHeight;
+      };
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
+      let fireworks = [];
+      let particles = [];
+      let hue = 120;
+      let timerTick = 0;
+      let timerTotal = 20;
+
+      const random = (min, max) => Math.random() * (max - min) + min;
+      const distance = (x1, y1, x2, y2) =>
+         Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+
+      function Firework(sx, sy, tx, ty) {
+         this.x = sx;
+         this.y = sy;
+         this.sx = sx;
+         this.sy = sy;
+         this.tx = tx;
+         this.ty = ty;
+         this.distanceToTarget = distance(sx, sy, tx, ty);
+         this.distanceTraveled = 0;
+         this.coordinates = Array(3).fill([this.x, this.y]);
+         this.angle = Math.atan2(ty - sy, tx - sx);
+         this.speed = 3;
+         this.acceleration = 1.05;
+         this.brightness = random(60, 90);
+      }
+
+      Firework.prototype.update = function (index) {
+         this.coordinates.pop();
+         this.coordinates.unshift([this.x, this.y]);
+         this.speed *= this.acceleration;
+         const vx = Math.cos(this.angle) * this.speed;
+         const vy = Math.sin(this.angle) * this.speed;
+         this.distanceTraveled = distance(
+            this.sx,
+            this.sy,
+            this.x + vx,
+            this.y + vy
+         );
+
+         if (this.distanceTraveled >= this.distanceToTarget) {
+            createParticles(this.tx, this.ty);
+            fireworks.splice(index, 1);
+         } else {
+            this.x += vx;
+            this.y += vy;
+         }
+      };
+
+      Firework.prototype.draw = function () {
+         ctx.beginPath();
+         ctx.moveTo(
+            this.coordinates[this.coordinates.length - 1][0],
+            this.coordinates[this.coordinates.length - 1][1]
+         );
+         ctx.lineTo(this.x, this.y);
+         ctx.strokeStyle = `hsl(${hue}, 100%, ${this.brightness}%)`;
+         ctx.stroke();
+      };
+
+      function Particle(x, y) {
+         this.x = x;
+         this.y = y;
+         this.coordinates = Array(5).fill([this.x, this.y]);
+         this.angle = random(0, Math.PI * 2);
+         this.speed = random(2, 12);
+         this.friction = 0.94;
+         this.gravity = 0.7;
+         this.hue = random(hue - 30, hue + 30);
+         this.brightness = random(60, 100);
+         this.alpha = 1;
+         this.decay = random(0.007, 0.010);
+      }
+
+      Particle.prototype.update = function (index) {
+         this.coordinates.pop();
+         this.coordinates.unshift([this.x, this.y]);
+         this.speed *= this.friction;
+         this.x += Math.cos(this.angle) * this.speed;
+         this.y += Math.sin(this.angle) * this.speed + this.gravity;
+         this.alpha -= this.decay;
+         if (this.alpha <= this.decay) particles.splice(index, 1);
+      };
+
+      Particle.prototype.draw = function () {
+         ctx.beginPath();
+         ctx.moveTo(
+            this.coordinates[this.coordinates.length - 1][0],
+            this.coordinates[this.coordinates.length - 1][1]
+         );
+         ctx.lineTo(this.x, this.y);
+         ctx.strokeStyle = `hsla(${this.hue}, 100%, ${this.brightness}%, ${this.alpha})`;
+         ctx.stroke();
+      };
+
+      const createParticles = (x, y) => {
+         let particleCount = 60;
+         while (particleCount--) particles.push(new Particle(x, y));
+      };
+
+      const loop = () => {
+         requestAnimationFrame(loop);
+         hue += 0.5;
+         ctx.globalCompositeOperation = "destination-out";
+         ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
+         ctx.fillRect(0, 0, canvas.width, canvas.height);
+         ctx.globalCompositeOperation = "lighter";
+
+         fireworks.forEach((f, i) => {
+            f.draw();
+            f.update(i);
+         });
+         particles.forEach((p, i) => {
+            p.draw();
+            p.update(i);
+         });
+
+         if (timerTick >= timerTotal) {
+            const launches = 4;
+            for (let i = 0; i < launches; i++) {
+               fireworks.push(
+                  new Firework(
+                     canvas.width / 2,
+                     canvas.height,
+                     random(0, canvas.width),
+                     random(0, canvas.height / 2)
+                  )
+               );
+            }
+            timerTick = 0;
+         } else {
+            timerTick++;
+         }
+      };
+      loop();
+
+      return () => {
+         window.removeEventListener("resize", resizeCanvas);
+         fireworks = [];
+         particles = [];
+         ctx.clearRect(0, 0, canvas.width, canvas.height);
+      };
+   }, []);
+
+   const cards = [
+      {
+         title: "Cải cách hành chính",
+         text: "Bỏ các đinh, trấn, thành lập 31 tỉnh trên cả nước; hoàn thiện bộ máy quản lý, đặt chức quan, quy định lương bổng và cấp tiền dưỡng liêm để tránh tham nhũng.",
+      },
+      {
+         title: "Phát triển kinh tế",
+         text: "Khuyến khích khai hoang lấn biển, đẩy mạnh thủy lợi, đào sông, hoàn chỉnh hệ thống đê điều, hoàn thiện sổ ruộng đất (địa bạ), quy định lại chế độ thuế.",
+      },
+      {
+         title: "Quân sự và chủ quyền",
+         text: "Tăng cường phòng thủ, xây dựng pháo đài (như Trấn Hải, Định Hải, Điện Hải), cử đội tàu đi thăm dò và tuần thám Hoàng Sa và Trường Sa.",
+      },
+      {
+         title: "Văn hóa - Giáo dục",
+         text: "Lập Quốc Sử Quán, Quốc tử giám, mở các khoa thi Tiến sĩ.",
+      },
    ];
 
    return (
-      <div
-         className="relative min-h-screen w-full flex items-center justify-center bg-cover bg-center text-[#f1e6d0]"
-         style={{ backgroundImage: `url('/hue-bg.jpg')` }}
-      >
-         {/* Nút quay lại */}
-         <div className="absolute top-4 left-4 z-[10001]">
-            <Button
-               onClick={() => navigate(-1)}
-               className="!bg-black/60 !text-yellow-300 !border !border-yellow-500 hover:!bg-black hover:!text-yellow-200 !rounded-full px-4 py-1"
-            >
-               Quay lại
-            </Button>
+      <div className="relative w-full h-screen flex items-center justify-center bg-black overflow-hidden">
+         {/* Background full màn hình */}
+         <img
+            src="/imgs/Background/backgroundprivateletter.jpg"
+            alt="Background"
+            className="absolute top-0 left-0 w-full h-full object-cover opacity-90 z-0"
+         />
+
+         {/* Canvas pháo hoa */}
+         <canvas
+            ref={canvasRef}
+            className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none mix-blend-overlay"
+         ></canvas>
+
+         {/* Ảnh trung tâm */}
+         <img
+            src="/imgs/PrivateLetter/anhgiuaprivateletter-removebg-preview.png"
+            alt="Ảnh trung tâm"
+            className="absolute z-20 w-[800px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-contain"
+         />
+
+         {/* 4 CARD */}
+         <div className="absolute z-30 grid grid-cols-2 grid-rows-2 gap-x-32 gap-y-28 max-w-7xl">
+            {cards.map(
+               (card, i) =>
+                  showCards[i] && (
+                     <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1 }}
+                        className="bg-gradient-to-b from-[#852f1e] to-[#90311e] text-white px-10 py-8 rounded-2xl shadow-lg border border-yellow-500 text-center max-w-[460px]"
+                     >
+                        <h2 className="text-3xl font-bold text-yellow-300 mb-4">
+                           {card.title}
+                        </h2>
+                        <p className="text-lg leading-relaxed">{card.text}</p>
+                     </motion.div>
+                  )
+            )}
          </div>
-         {!opened && (
-            <motion.div
-               initial={{ opacity: 0, scale: 0.9 }}
-               animate={{ opacity: 1, scale: 1 }}
-               transition={{ duration: 1 }}
-               className="text-center"
-            >
-               <h1 className="text-3xl mb-8 text-yellow-300 font-heading tracking-widest drop-shadow-lg">
-                  HUYỀN HOÀNG BOX
-               </h1>
-               <Button
-                  type="primary"
-                  size="large"
-                  onClick={() => setOpened(true)}
-                  className="!bg-gradient-to-r !from-yellow-500 !to-amber-600 !text-black !font-bold !rounded-full px-8 py-6 hover:scale-105 transition-all"
-               >
-                  MỞ BỨC THƯ
-               </Button>
-            </motion.div>
-         )}
-
-         {opened && (
-            <motion.div
-               initial={{ opacity: 0, scale: 0.95 }}
-               animate={{ opacity: 1, scale: 1 }}
-               transition={{ duration: 1.5 }}
-               className="backdrop-blur-md bg-black/70 p-8 md:p-12 rounded-2xl shadow-2xl max-w-3xl max-h-[85vh] overflow-y-auto border border-yellow-600"
-            >
-               <h1 className="text-center text-2xl md:text-3xl text-yellow-400 mb-6 font-semibold font-heading">
-                  Bức Thư Của Huyền Hoàng Box
-               </h1>
-
-               {paragraphs.map((text, index) => (
-                  <motion.p
-                     key={index}
-                     initial={{ opacity: 0, y: 20 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     transition={{ delay: 0.5 + index * 0.4 }}
-                     className="text-justify mb-4 leading-relaxed"
-                  >
-                     {text}
-                  </motion.p>
-               ))}
-            </motion.div>
-         )}
       </div>
    );
 }
