@@ -7,23 +7,27 @@ export default function CoutRound() {
 
    const initial = useMemo(() => {
       const parsed = parseInt(round, 10);
-      return Number.isFinite(parsed) ? parsed : 1;
+      return Number.isFinite(parsed) ? parsed : 0;
    }, [round]);
 
    const [value, setValue] = useState(initial);
+   const [isLandscape, setIsLandscape] = useState(window.innerWidth > window.innerHeight);
+
+   useEffect(() => {
+      const handleResize = () => {
+         setIsLandscape(window.innerWidth > window.innerHeight);
+      };
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+   }, []);
 
    useEffect(() => {
       setValue(initial);
    }, [initial]);
 
    const updateUrl = (next) => {
-      // Giữ không âm, có thể chỉnh sửa theo yêu cầu
       const safe = Number.isFinite(next) ? next : 0;
-      if (safe <= 0) {
-         navigate(`/cout-round`, { replace: true });
-      } else {
-         navigate(`/cout-round/${safe}`, { replace: true });
-      }
+      navigate(`/cout-round/${safe}`, { replace: true });
    };
 
    const onIncrease = () => {
@@ -38,22 +42,40 @@ export default function CoutRound() {
       updateUrl(next);
    };
 
-   return (
-      <div className="min-h-screen w-full flex flex-col items-center justify-center" style={{ backgroundColor: "#90311e" }}>
-         <h1 className="text-white text-5xl sm:text-7xl font-bold mb-8 select-none">Round {value}</h1>
+   // Format thành 2 chữ số
+   const formatted = String(value).padStart(2, "0");
 
-         <div className="flex gap-6">
+   return (
+      <div
+         className={`min-h-screen w-full flex items-center justify-center bg-cover bg-center bg-no-repeat transition-all duration-300`}
+         style={{
+            backgroundImage: "url('/imgs/Background/Background.png')",
+         }}
+      >
+         {/* Khi màn hình ngang */}
+         <div
+            className={`flex ${isLandscape ? "flex-row" : "flex-col"
+               } items-center justify-center gap-12`}
+         >
+            {/* Nút giảm */}
             <button
                onClick={onDecrease}
                aria-label="Decrease round"
-               className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/30 text-white text-4xl sm:text-5xl flex items-center justify-center border border-white/30 hover:bg-black/40 active:scale-95 transition"
+               className="w-20 h-20 rounded-full bg-black/40 text-white text-5xl flex items-center justify-center border border-white/30 hover:bg-black/50 active:scale-95 transition"
             >
                −
             </button>
+
+            {/* Hiển thị Round 00 */}
+            <h1 className="text-red-700 text-7xl sm:text-8xl font-extrabold select-none text-center drop-shadow-xl tracking-wider">
+               {formatted}
+            </h1>
+
+            {/* Nút tăng */}
             <button
                onClick={onIncrease}
                aria-label="Increase round"
-               className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-black/30 text-white text-4xl sm:text-5xl flex items-center justify-center border border-white/30 hover:bg-black/40 active:scale-95 transition"
+               className="w-20 h-20 rounded-full bg-black/40 text-white text-5xl flex items-center justify-center border border-white/30 hover:bg-black/50 active:scale-95 transition"
             >
                +
             </button>
@@ -61,5 +83,3 @@ export default function CoutRound() {
       </div>
    );
 }
-
-

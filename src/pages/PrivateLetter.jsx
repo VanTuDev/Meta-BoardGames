@@ -2,12 +2,12 @@ import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import "tailwindcss/tailwind.css";
 
-export default function PrivateLetter() {
+export default function PrivateLetterMobile() {
    const [showCards, setShowCards] = useState([false, false, false, false]);
    const canvasRef = useRef(null);
 
    useEffect(() => {
-      // Hiện 4 card lần lượt
+      // Hiện lần lượt 4 card
       showCards.forEach((_, i) => {
          setTimeout(() => {
             setShowCards((prev) => {
@@ -18,10 +18,9 @@ export default function PrivateLetter() {
          }, i * 4000);
       });
 
-      // --- PHÁO HOA TOÀN MÀN HÌNH ---
+      // --- PHÁO HOA ---
       const canvas = canvasRef.current;
       if (!canvas) return;
-
       const ctx = canvas.getContext("2d");
 
       const resizeCanvas = () => {
@@ -101,7 +100,7 @@ export default function PrivateLetter() {
          this.hue = random(hue - 30, hue + 30);
          this.brightness = random(60, 100);
          this.alpha = 1;
-         this.decay = random(0.007, 0.010);
+         this.decay = random(0.007, 0.01);
       }
 
       Particle.prototype.update = function (index) {
@@ -148,7 +147,7 @@ export default function PrivateLetter() {
          });
 
          if (timerTick >= timerTotal) {
-            const launches = 4;
+            const launches = 3;
             for (let i = 0; i < launches; i++) {
                fireworks.push(
                   new Firework(
@@ -174,6 +173,7 @@ export default function PrivateLetter() {
       };
    }, []);
 
+   // Nội dung giữ nguyên như bạn yêu cầu
    const cards = [
       {
          title: "Cải cách hành chính",
@@ -193,48 +193,56 @@ export default function PrivateLetter() {
       },
    ];
 
+   const cornerPositions = [
+      "top-5 left-5",
+      "top-5 right-5",
+      "bottom-5 left-5",
+      "bottom-5 right-5",
+   ];
+
    return (
       <div className="relative w-full h-screen flex items-center justify-center bg-black overflow-hidden">
-         {/* Background full màn hình */}
+         {/* Nền */}
          <img
             src="/imgs/Background/backgroundprivateletter.jpg"
             alt="Background"
             className="absolute top-0 left-0 w-full h-full object-cover opacity-90 z-0"
          />
 
-         {/* Canvas pháo hoa */}
+         {/* Pháo hoa */}
          <canvas
             ref={canvasRef}
             className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none mix-blend-overlay"
          ></canvas>
 
-         {/* Ảnh trung tâm */}
+         {/* Ảnh trung tâm – to hơn */}
          <img
             src="/imgs/PrivateLetter/anhgiuaprivateletter-removebg-preview.png"
             alt="Ảnh trung tâm"
-            className="absolute z-20 w-[800px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-contain"
+            className="absolute z-20 w-[400vw] max-w-[800px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-contain"
          />
 
-         {/* 4 CARD */}
-         <div className="absolute z-30 grid grid-cols-2 grid-rows-2 gap-x-32 gap-y-28 max-w-7xl">
-            {cards.map(
-               (card, i) =>
-                  showCards[i] && (
-                     <motion.div
-                        key={i}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1 }}
-                        className="bg-gradient-to-b from-[#852f1e] to-[#90311e] text-white px-10 py-8 rounded-2xl shadow-lg border border-yellow-500 text-center max-w-[460px]"
-                     >
-                        <h2 className="text-3xl font-bold text-yellow-300 mb-4">
-                           {card.title}
-                        </h2>
-                        <p className="text-lg leading-relaxed">{card.text}</p>
-                     </motion.div>
-                  )
-            )}
-         </div>
+         {/* 4 card ở 4 góc */}
+         {cards.map(
+            (card, i) =>
+               showCards[i] && (
+                  <motion.div
+                     key={i}
+                     initial={{ opacity: 0, scale: 0.8 }}
+                     animate={{ opacity: 1, scale: 1 }}
+                     transition={{ duration: 0.8 }}
+                     className={`absolute ${cornerPositions[i]} z-30 
+                w-[44vw] h-[30vh] bg-gradient-to-b from-[#852f1e] to-[#90311e]
+                text-white p-6 rounded-xl border border-yellow-500 
+                shadow-lg flex flex-col justify-center text-center`}
+                  >
+                     <h2 className="text-yellow-300 text-[14px] font-bold mb-1 leading-tight">
+                        {card.title}
+                     </h2>
+                     <p className="text-[11px] leading-snug">{card.text}</p>
+                  </motion.div>
+               )
+         )}
       </div>
    );
 }
