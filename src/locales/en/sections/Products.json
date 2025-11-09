@@ -4,6 +4,60 @@
    "viewAll": "View all →",
    "quickBuy": "Quick buy",
    "badge": {
-      "preorder": "Pre-order"
-   }
+      "preorder": "Pre-order",
+      "new": "New"
+   },
+   "labels": {
+      "players": "Players",
+      "age": "Age",
+      "time": "Duration",
+      "material": "Materials"
+   },
+   "products": [
+      {
+         "id": 1,
+         "name": "Huyền Hoàng Box",
+         "category": "Puzzle – Adventure Exploration",
+         "players": "01-06",
+         "age": "12+",
+         "time": "45'-90'",
+         "description": "Huyền Hoàng Box is a \"Heritage Box\" that recreates Minh Mạng Tomb (Hiếu Lăng) – a masterpiece of architecture and philosophy from the Nguyễn Dynasty. Opening the box, you'll embark on a journey to \"Bring Huế Home\", with 6 architectural models arranged in a T-shape: Đại Hồng Môn – Điện Sùng Ân – Minh Lâu – Hai Trụ Biểu – Huyền Cung. Inside each model is a code and puzzle mission to help you discover the story of the Nguyễn Dynasty. The game ends when you unlock all 7 journey stages and reveal the final secret of Huyền Hoàng.",
+         "material": "3-5mm polym wood, kraft paper, code lock",
+         "badge": "New",
+         "preorder": true,
+         "img": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "hoverImg": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "layout": "vertical"
+      },
+      {
+         "id": 2,
+         "name": "Huyền Hoàng Map",
+         "category": "Exploration - Role-playing - Education",
+         "players": "03–06",
+         "age": "12+",
+         "time": "20'–40'",
+         "description": "Continuing the journey from Huyền Hoàng Box, Huyền Hoàng Map transforms you into powerful Ministers in the Nguyễn Dynasty, entering an intense battle of wits between power and finance. Players will use gold to build structures, collect taxes, negotiate, or destroy opponents' assets – where every decision can turn the court's situation. Finally, the most powerful Grand Minister – the one who owns the most structures and gold, will rule the Huyền Hoàng court.",
+         "material": "3mm polym wood, character tokens",
+         "badge": "New",
+         "preorder": true,
+         "img": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "hoverImg": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "layout": "horizontal"
+      },
+      {
+         "id": 3,
+         "name": "Huyền Hoàng Card",
+         "category": "Strategy – Deduction – Mind Games",
+         "players": "04-06",
+         "age": "12+",
+         "time": "30'–40'",
+         "description": "Enter the 15th-century court, where the Six Ministries' Ministers compete for power. Each card is a function – each action is a gamble. Players will disguise, confront, manipulate, and eliminate opponents to become the last Minister holding cards on the field. The combination of financial strategy (collecting gold, paying fees, investing) and the art of disguise makes each match a tense but dramatic battle of wits.",
+         "material": "Deck includes: 24 character cards (6 Ministries), 16 special function cards, gold coins, and rulebook",
+         "badge": "New",
+         "preorder": true,
+         "img": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "hoverImg": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "layout": "vertical"
+      }
+   ]
 }

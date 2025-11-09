@@ -4,6 +4,60 @@
    "viewAll": "Xem tất cả →",
    "quickBuy": "Mua nhanh",
    "badge": {
-      "preorder": "Đặt trước"
-   }
+      "preorder": "Đặt trước",
+      "new": "New"
+   },
+   "labels": {
+      "players": "Số người chơi",
+      "age": "Độ tuổi",
+      "time": "Thời gian",
+      "material": "Chất liệu"
+   },
+   "products": [
+      {
+         "id": 1,
+         "name": "Huyền Hoàng Box",
+         "category": "Giải đố – Phiêu lưu khám phá",
+         "players": "01-06",
+         "age": "12+",
+         "time": "45'-90'",
+         "description": "Huyền Hoàng Box là chiếc \"Hộp Di Sản\" tái hiện lại Lăng Minh Mạng (Hiếu Lăng) – kiệt tác kiến trúc và triết học thời Nguyễn. Mở hộp, bạn sẽ như bước vào hành trình \"Mang Huế về nhà\", với 6 mô hình kiến trúc xếp theo hình chữ T: Đại Hồng Môn – Điện Sùng Ân – Minh Lâu – Hai Trụ Biểu – Huyền Cung. Bên trong mỗi mô hình là một mật mã và nhiệm vụ giải đố giúp bạn khám phá câu chuyện của triều Nguyễn. Trò chơi kết thúc khi bạn mở khóa toàn bộ 7 chặng hành trình và hé lộ bí mật cuối cùng của Huyền Hoàng.",
+         "material": "Gỗ polym 3-5mm, giấy kraft, khóa mật mã",
+         "badge": "New",
+         "preorder": true,
+         "img": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "hoverImg": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "layout": "vertical"
+      },
+      {
+         "id": 2,
+         "name": "Huyền Hoàng Map",
+         "category": "Khám phá - Nhập vai - Giáo dục",
+         "players": "03–06",
+         "age": "12+",
+         "time": "20'–40'",
+         "description": "Tiếp nối hành trình từ Huyền Hoàng Box, Huyền Hoàng Map đưa bạn hóa thân thành các Thượng Thư quyền lực trong triều Nguyễn, bước vào cuộc đấu trí gay cấn giữa quyền lực và tài chính. Người chơi sẽ sử dụng vàng để xây dựng công trình, thu thuế, thương lượng hoặc phá hủy cơ nghiệp của đối thủ – nơi mỗi quyết định đều có thể xoay chuyển cục diện triều đình. Và sau cùng, Đại Thượng Thư quyền lực nhất – người sở hữu nhiều công trình và vàng nhất, sẽ là người thống trị triều đình Huyền Hoàng.",
+         "material": "Gỗ polym 3mm, token nhân vật",
+         "badge": "New",
+         "preorder": true,
+         "img": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "hoverImg": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "layout": "horizontal"
+      },
+      {
+         "id": 3,
+         "name": "Huyền Hoàng Card",
+         "category": "Chiến thuật – Suy luận – Đấu trí",
+         "players": "04-06",
+         "age": "12+",
+         "time": "30'–40'",
+         "description": "Bước vào triều đình thế kỷ XV, nơi Lục Bộ Thượng Thư tranh đoạt quyền lực. Mỗi lá bài là một chức năng – mỗi hành động là một ván cược. Người chơi sẽ giả dạng, đối chất, thao túng và loại bỏ đối thủ để trở thành Thượng Thư cuối cùng còn giữ bài trên sân. Sự kết hợp giữa chiến thuật tài chính (thu vàng, trả phí, đầu tư) và nghệ thuật giả dạng khiến mỗi ván đấu trở thành cuộc đấu trí căng thẳng nhưng đầy kịch tính.",
+         "material": "Bộ bài gồm: 24 lá nhân vật (6 Bộ), 16 lá chức năng đặc biệt, đồng vàng và sổ luật chơi",
+         "badge": "New",
+         "preorder": true,
+         "img": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "hoverImg": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "layout": "vertical"
+      }
+   ]
 }
