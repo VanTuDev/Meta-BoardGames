@@ -5,7 +5,8 @@
    "quickBuy": "Mua nhanh",
    "badge": {
       "preorder": "Đặt trước",
-      "new": "New"
+      "new": "New",
+      "combo": "Combo"
    },
    "labels": {
       "players": "Số người chơi",
@@ -15,7 +16,7 @@
    },
    "products": [
       {
-         "id": 1,
+         "id": 2,
          "name": "Huyền Hoàng Box",
          "category": "Giải đố – Phiêu lưu khám phá",
          "players": "01-06",
@@ -30,13 +31,13 @@
          "layout": "vertical"
       },
       {
-         "id": 2,
+         "id": 3,
          "name": "Huyền Hoàng Map",
          "category": "Khám phá - Nhập vai - Giáo dục",
          "players": "03–06",
          "age": "12+",
          "time": "20'–40'",
-         "description": "Tiếp nối hành trình từ Huyền Hoàng Box, Huyền Hoàng Map đưa bạn hóa thân thành các Thượng Thư quyền lực trong triều Nguyễn, bước vào cuộc đấu trí gay cấn giữa quyền lực và tài chính. Người chơi sẽ sử dụng vàng để xây dựng công trình, thu thuế, thương lượng hoặc phá hủy cơ nghiệp của đối thủ – nơi mỗi quyết định đều có thể xoay chuyển cục diện triều đình. Và sau cùng, Đại Thượng Thư quyền lực nhất – người sở hữu nhiều công trình và vàng nhất, sẽ là người thống trị triều đình Huyền Hoàng.",
+         "description": "Huyền Hoàng Map đưa bạn hóa thân thành các Thượng Thư quyền lực trong triều Nguyễn, bước vào cuộc đấu trí gay cấn giữa quyền lực và tài chính. Người chơi sẽ sử dụng vàng để xây dựng công trình, thu thuế, thương lượng hoặc phá hủy cơ nghiệp của đối thủ – nơi mỗi quyết định đều có thể xoay chuyển cục diện triều đình. Và sau cùng, Đại Thượng Thư quyền lực nhất – người sở hữu nhiều công trình và vàng nhất, sẽ là người thống trị triều đình Huyền Hoàng.",
          "material": "Gỗ polym 3mm, token nhân vật",
          "badge": "New",
          "preorder": true,
@@ -45,7 +46,7 @@
          "layout": "horizontal"
       },
       {
-         "id": 3,
+         "id": 4,
          "name": "Huyền Hoàng Card",
          "category": "Chiến thuật – Suy luận – Đấu trí",
          "players": "04-06",

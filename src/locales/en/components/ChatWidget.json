@@ -4,5 +4,12 @@
    "placeholder": "Type a message...",
    "openChat": "Open chat",
    "closeChat": "Close chat",
-   "send": "Send"
+   "send": "Send",
+   "sampleQuestions": {
+      "title": "Frequently asked questions",
+      "questions": [
+         "What is Huyền Hoàng?",
+         "Who created this product series?"
+      ]
+   }
 }

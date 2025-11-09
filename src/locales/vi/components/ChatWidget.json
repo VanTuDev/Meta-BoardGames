@@ -4,5 +4,12 @@
    "placeholder": "Nhập tin nhắn...",
    "openChat": "Mở chat",
    "closeChat": "Đóng chat",
-   "send": "Gửi"
+   "send": "Gửi",
+   "sampleQuestions": {
+      "title": "Câu hỏi thường gặp",
+      "questions": [
+         "Huyền Hoàng là gì?",
+         "Bộ sản phẩm do ai sáng tạo?"
+      ]
+   }
 }
