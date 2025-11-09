@@ -3,9 +3,64 @@ import { MessageCircle, X, Send } from "lucide-react";
 import { useI18n } from "../i18n";
 import { GoogleGenAI } from "@google/genai";
 
-// const API_KEY = import.meta.env.VITE_GOOGLE_AI_API_KEY;
-const API_KEY = "AIzaSyD5hq1IcDm6C4hN0SGx2fx9FWzwY9zhWOI";
+const API_KEY = import.meta.env.VITE_GOOGLE_AI_API_KEY;
+// const API_KEY = "AIzaSyD5hq1IcDm6C4hN0SGx2fx9FWzwY9zhWOI";
 
+
+// Parse markdown text thành JSX
+const parseMarkdown = (text) => {
+   if (!text) return text;
+
+   // Helper function để parse bold trong một đoạn text
+   const parseBold = (str) => {
+      const parts = str.split(/(\*\*[^*]+\*\*)/g);
+      return parts.map((part, idx) => {
+         if (part.startsWith("**") && part.endsWith("**")) {
+            const boldText = part.slice(2, -2);
+            return <strong key={idx} className="font-bold">{boldText}</strong>;
+         }
+         return <span key={idx}>{part}</span>;
+      });
+   };
+
+   // Tách text thành các phần dựa trên số thứ tự (1., 2., 3., etc.)
+   // Tách tại vị trí trước số thứ tự tiếp theo
+   const parts = text.split(/\s+(?=\d+\.\s+)/);
+
+   // Kiểm tra xem có phải danh sách đánh số không (ít nhất 2 phần và phần đầu bắt đầu bằng số)
+   if (parts.length > 1 && /^\d+\.\s+/.test(parts[0])) {
+      return (
+         <div className="space-y-2">
+            {parts.map((part, idx) => {
+               const trimmed = part.trim();
+               if (!trimmed) return null;
+               return (
+                  <div key={idx} className="leading-relaxed">
+                     {parseBold(trimmed)}
+                  </div>
+               );
+            })}
+         </div>
+      );
+   }
+
+   // Không có danh sách đánh số, chỉ parse bold và xuống dòng
+   const lines = text.split(/\n/);
+   if (lines.length > 1) {
+      return (
+         <div className="space-y-1">
+            {lines.map((line, idx) => (
+               <div key={idx} className="leading-relaxed">
+                  {parseBold(line.trim())}
+               </div>
+            ))}
+         </div>
+      );
+   }
+
+   // Chỉ có bold, không có xuống dòng
+   return <span>{parseBold(text)}</span>;
+};
 
 const ChatWidget = () => {
    const { t, locale } = useI18n();
@@ -155,7 +210,7 @@ Answer briefly, clearly, and friendly. If you don't know the answer, say you wil
                   )}
                   {messages.map((m) => (
                      <div key={m.id} className={`max-w-[80%] px-3 py-2 rounded-md text-sm ${m.sender === "me" ? "ml-auto bg-[#e5d6a3]" : "bg-white border"}`}>
-                        {m.text}
+                        {m.sender === "bot" ? parseMarkdown(m.text) : m.text}
                      </div>
                   ))}
                   {loading && (
