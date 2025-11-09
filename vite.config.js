@@ -8,9 +8,12 @@ export default defineConfig({
    base: './',
    build: {
       outDir: 'dist',
+      commonjsOptions: {
+         transformMixedEsModules: true,
+      },
    },
    optimizeDeps: {
-      include: ['react-fast-marquee']
+      include: ['react-fast-marquee', '@google/genai'],
    },
    plugins: [
       react(),

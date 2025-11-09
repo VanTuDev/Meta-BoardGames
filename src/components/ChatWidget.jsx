@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
 import { useI18n } from "../i18n";
-import { GoogleGenAI } from "@google/genai";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_AI_API_KEY;
-// const API_KEY = "AIzaSyD5hq1IcDm6C4hN0SGx2fx9FWzwY9zhWOI";
 
 
 // Parse markdown text thành JSX
@@ -103,6 +101,8 @@ const ChatWidget = () => {
             throw new Error("API_KEY is not configured");
          }
          setLoading(true);
+         // Dynamic import để tránh lỗi build
+         const { GoogleGenAI } = await import("@google/genai");
          const ai = new GoogleGenAI({ apiKey: API_KEY });
 
          const productsContext = getProductsContext();
