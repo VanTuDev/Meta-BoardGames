@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { MessageCircle, X, Send } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { X, Send } from "lucide-react";
 import { useI18n } from "../i18n";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_AI_API_KEY;
@@ -68,6 +68,7 @@ const ChatWidget = () => {
       { id: 1, sender: "bot", text: t("components.ChatWidget.initialMessage") },
    ]);
    const [loading, setLoading] = useState(false);
+   const scrollRef = useRef(null);
 
    // Cập nhật tin nhắn ban đầu khi đổi ngôn ngữ
    useEffect(() => {
@@ -75,6 +76,13 @@ const ChatWidget = () => {
          { id: 1, sender: "bot", text: t("components.ChatWidget.initialMessage") },
       ]);
    }, [locale, t]);
+
+   // Tự động scroll xuống cuối khi có tin nhắn mới
+   useEffect(() => {
+      if (scrollRef.current) {
+         scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      }
+   }, [messages, loading]);
 
    // Lấy dữ liệu sản phẩm từ i18n
    const getProductsContext = () => {
@@ -168,76 +176,122 @@ Answer briefly, clearly, and friendly. If you don't know the answer, say you wil
       await sendToAI(text);
    };
 
+   const logoSrc = "/imgs/Logo/logo.png";
+   const patternSrc = "/imgs/Background/Background.png";
+
    return (
-      <div className="fixed bottom-4 right-4 z-50">
-         {/* Nút nổi */}
+      <div className="fixed bottom-6 right-6 z-50">
          {!open && (
             <button
                aria-label={t("components.ChatWidget.openChat")}
-               className="rounded-full bg-[#610C40] text-white p-4 shadow-lg hover:bg-[#4a0a31] transition"
                onClick={() => setOpen(true)}
+               className="relative flex h-16 w-16 items-center justify-center rounded-full border-4 border-[#9B4CFF] bg-[#F4DFAF] shadow-2xl transition hover:scale-105 hover:shadow-[0px_10px_30px_rgba(155,76,255,0.35)]"
             >
-               <MessageCircle className="w-6 h-6" />
+               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-inner">
+                  <img src={logoSrc} alt="M.ETA" className="h-10 w-10 object-contain" />
+               </div>
             </button>
          )}
 
-         {/* Cửa sổ chat */}
          {open && (
-            <div className="w-[320px] sm:w-[360px] h-[420px] bg-white shadow-2xl rounded-lg overflow-hidden">
-               <div className="flex items-center justify-between px-4 py-3 bg-[#610C40] text-white">
-                  <span className="font-semibold">{t("components.ChatWidget.title")}</span>
-                  <button aria-label={t("components.ChatWidget.closeChat")} onClick={() => setOpen(false)} className="hover:opacity-80 transition">
-                     <X className="w-5 h-5" />
-                  </button>
-               </div>
-               <div className="p-3 h-[320px] overflow-y-auto space-y-2 bg-gray-50">
-                  {messages.length === 1 && !loading && (
-                     <div className="space-y-2 mb-3">
-                        <p className="text-xs font-semibold text-gray-600 mb-2">
-                           {t("components.ChatWidget.sampleQuestions.title")}
-                        </p>
-                        {t("components.ChatWidget.sampleQuestions.questions")?.map((question, idx) => (
-                           <button
-                              key={idx}
-                              onClick={() => onSend(question)}
-                              className="w-full text-left px-3 py-2 text-xs bg-white border border-gray-200 rounded-md hover:bg-gray-50 hover:border-[#610C40] transition text-gray-700"
-                              disabled={loading}
-                           >
-                              {question}
-                           </button>
-                        ))}
-                     </div>
-                  )}
-                  {messages.map((m) => (
-                     <div key={m.id} className={`max-w-[80%] px-3 py-2 rounded-md text-sm ${m.sender === "me" ? "ml-auto bg-[#e5d6a3]" : "bg-white border"}`}>
-                        {m.sender === "bot" ? parseMarkdown(m.text) : m.text}
-                     </div>
-                  ))}
-                  {loading && (
-                     <div className="max-w-[80%] px-3 py-2 rounded-md text-sm bg-white border">
-                        <span className="inline-block animate-pulse">
-                           {locale === "vi" ? "Đang suy nghĩ..." : "Thinking..."}
-                        </span>
-                     </div>
-                  )}
-               </div>
-               <div className="border-t p-2 flex items-center gap-2">
-                  <input
-                     value={message}
-                     onChange={(e) => setMessage(e.target.value)}
-                     onKeyDown={(e) => e.key === "Enter" && !loading && onSend()}
-                     disabled={loading}
-                     className="flex-1 border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                     placeholder={t("components.ChatWidget.placeholder")}
-                  />
+            <div
+               className="relative flex h-[480px] w-[340px] flex-col overflow-hidden rounded-[28px] border-[3px] border-[#9B4CFF] bg-[#F8EAD1] shadow-[0px_18px_45px_rgba(112,26,26,0.35)] sm:h-[520px] sm:w-[380px]"
+               style={{
+                  backgroundImage: `url(${patternSrc})`,
+                  backgroundSize: "320px",
+               }}
+            >
+               <div className="flex items-center justify-between bg-[#781B1B] px-5 py-4 text-white">
+                  <span className="text-base font-semibold uppercase tracking-wide">
+                     {t("components.ChatWidget.title")}
+                  </span>
                   <button
-                     onClick={onSend}
-                     disabled={loading}
-                     className="bg-[#610C40] text-white rounded-md p-2 hover:bg-[#4a0a31] transition disabled:opacity-50 disabled:cursor-not-allowed"
-                     aria-label={t("components.ChatWidget.send")}
+                     aria-label={t("components.ChatWidget.closeChat")}
+                     onClick={() => setOpen(false)}
+                     className="rounded-full border border-white/50 p-1 transition hover:scale-110 hover:bg-white/10"
                   >
-                     <Send className="w-4 h-4" />
+                     <X className="h-4 w-4" />
                   </button>
+               </div>
+
+               <div className="flex flex-1 min-h-0 gap-3 px-4 pb-4 pt-3">
+
+                  <div className="flex-1 min-h-0">
+                     <div className="flex h-full flex-col overflow-hidden">
+                        <div ref={scrollRef} className="flex-1 min-h-0 space-y-3 overflow-y-auto px-4 py-3 custom-scrollbar">
+                           {messages.map((m) => (
+                              <div
+                                 key={m.id}
+                                 className={`flex items-start gap-2 ${m.sender === "me" ? "ml-auto flex-row-reverse" : ""}`}
+                              >
+                                 {m.sender === "bot" && (
+                                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/90 shadow-[0px_4px_12px_rgba(120,27,27,0.2)]">
+                                       <img src={logoSrc} alt="M.ETA" className="h-6 w-6 object-contain" />
+                                    </div>
+                                 )}
+                                 <div
+                                    className={`max-w-[84%] rounded-[20px] px-4 py-3 text-sm leading-relaxed shadow-[0px_10px_25px_rgba(135,76,26,0.12)] ${m.sender === "me"
+                                       ? "bg-[#A6672A] text-white"
+                                       : "bg-white/95 text-[#4B2B0F]"
+                                       }`}
+                                 >
+                                    {m.sender === "bot" ? parseMarkdown(m.text) : m.text}
+                                 </div>
+                              </div>
+                           ))}
+
+                           {loading && (
+                              <div className="flex items-start gap-2">
+                                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/90 shadow-[0px_4px_12px_rgba(120,27,27,0.2)]">
+                                    <img src={logoSrc} alt="M.ETA" className="h-6 w-6 object-contain" />
+                                 </div>
+                                 <div className="max-w-[84%] rounded-[20px] bg-white/95 px-4 py-3 text-sm text-[#4B2B0F] shadow-[0px_10px_25px_rgba(135,76,26,0.12)]">
+                                    <span className="inline-block animate-pulse">
+                                       {locale === "vi" ? "Đang suy nghĩ..." : "Thinking..."}
+                                    </span>
+                                 </div>
+                              </div>
+                           )}
+
+                           {messages.length === 1 && !loading && (
+                              <div className="space-y-3 pt-2">
+                                 <p className="text-xs font-semibold uppercase tracking-wide text-[#874C1A]">
+                                    {t("components.ChatWidget.sampleQuestions.title")}
+                                 </p>
+                                 {t("components.ChatWidget.sampleQuestions.questions")?.map((question, idx) => (
+                                    <button
+                                       key={idx}
+                                       onClick={() => onSend(question)}
+                                       disabled={loading}
+                                       className="w-full rounded-[18px] border border-[#F0C676]/30 bg-transparent px-3 py-2 text-left text-xs font-medium text-[#874C1A]/30 transition hover:opacity-60 hover:-translate-y-[1px] hover:border-[#9B4CFF]/40 hover:text-[#6A2A15]/40"
+                                    >
+                                       {question}
+                                    </button>
+                                 ))}
+                              </div>
+                           )}
+                        </div>
+
+                        <div className="flex items-center gap-3 border-t border-[#F0C676] bg-[#F3DAB3]/70 px-4 py-3">
+                           <input
+                              value={message}
+                              onChange={(e) => setMessage(e.target.value)}
+                              onKeyDown={(e) => e.key === "Enter" && !loading && onSend()}
+                              disabled={loading}
+                              className="h-10 flex-1 rounded-full border border-[#F0C676] bg-white/90 px-4 text-sm text-[#874C1A] placeholder:text-[#B58A4C] focus:outline-none focus:ring-2 focus:ring-[#9B4CFF]/60 disabled:opacity-60"
+                              placeholder={t("components.ChatWidget.placeholder")}
+                           />
+                           <button
+                              onClick={onSend}
+                              disabled={loading}
+                              aria-label={t("components.ChatWidget.send")}
+                              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#781B1B] text-white shadow-[0px_10px_20px_rgba(120,27,27,0.35)] transition hover:scale-105 disabled:opacity-60"
+                           >
+                              <Send className="h-4 w-4" />
+                           </button>
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
          )}

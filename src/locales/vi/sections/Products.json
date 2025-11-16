@@ -26,8 +26,8 @@
          "material": "Gỗ polym 3-5mm, giấy kraft, khóa mật mã",
          "badge": "New",
          "preorder": true,
-         "img": "/imgs/Products/HoangHuyenSetBox.jpg",
-         "hoverImg": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "img": "/imgs/Products/hoanghuyenboxgo.jpg",
+         "hoverImg": "/imgs/Products/hoanghuyenboxgo.jpg",
          "layout": "vertical"
       },
       {
@@ -41,8 +41,8 @@
          "material": "Gỗ polym 3mm, token nhân vật",
          "badge": "New",
          "preorder": true,
-         "img": "/imgs/Products/HoangHuyenSetBox.jpg",
-         "hoverImg": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "img": "/imgs/Products/hoanhuyenmap.jpg",
+         "hoverImg": "/imgs/Products/hoanhuyenmap.jpg",
          "layout": "horizontal"
       },
       {

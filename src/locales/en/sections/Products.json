@@ -26,8 +26,8 @@
          "material": "3-5mm polym wood, kraft paper, code lock",
          "badge": "New",
          "preorder": true,
-         "img": "/imgs/Products/HoangHuyenSetBox.jpg",
-         "hoverImg": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "img": "/imgs/Products/hoanghuyenboxgo.jpg",
+         "hoverImg": "/imgs/Products/hoanghuyenboxgo.jpg",
          "layout": "vertical"
       },
       {
@@ -41,8 +41,8 @@
          "material": "3mm polym wood, character tokens",
          "badge": "New",
          "preorder": true,
-         "img": "/imgs/Products/HoangHuyenSetBox.jpg",
-         "hoverImg": "/imgs/Products/HoangHuyenSetBox.jpg",
+         "img": "/imgs/Products/hoanhuyenmap.jpg",
+         "hoverImg": "/imgs/Products/hoanhuyenmap.jpg",
          "layout": "horizontal"
       },
       {
