@@ -50,17 +50,17 @@ const Header = () => {
             <nav className="hidden md:flex items-center space-x-6 font-sans text-sm">
                <button
                   onClick={() => handleScrollToSection("products")}
-                  className="flex items-center hover:text-gray-500 font-bold cursor-pointer text-white"
+                  className="flex items-center hover:text-gray-500 font-bold cursor-pointer text-gray-900"
                >
                   {t("components.Header.nav.products")} <ChevronDown className="w-4 h-4 ml-1" />
                </button>
                <button
                   onClick={() => handleScrollToSection("collections")}
-                  className="flex items-center hover:text-gray-500 font-bold cursor-pointer text-white"
+                  className="flex items-center hover:text-gray-500 font-bold cursor-pointer text-gray-900"
                >
                   {t("components.Header.nav.collections")} <ChevronDown className="w-4 h-4 ml-1" />
                </button>
-               <Link to="/about" className="hover:text-gray-500 font-bold text-white">{t("components.Header.nav.about")}</Link>
+               <Link to="/about" className="hover:text-gray-500 font-bold text-gray-900">{t("components.Header.nav.about")}</Link>
             </nav>
 
             {/* Logo center */}
@@ -83,7 +83,7 @@ const Header = () => {
                >
                   <Menu className="w-6 h-6" />
                </button>
-               <a href="#" className="hidden md:block hover:text-gray-500 font-bold text-white">{t("components.Header.nav.contact")}</a>
+               <a href="#" className="hidden md:block hover:text-gray-500 font-bold text-gray-900">{t("components.Header.nav.contact")}</a>
                {/* Locale Switcher */}
                <div className="flex items-center gap-2">
                   <button
@@ -103,8 +103,8 @@ const Header = () => {
                      <span className="hidden md:inline">EN</span>
                   </button>
                </div>
-               <Search className="w-5 h-5 cursor-pointer hover:text-gray-500 text-white" />
-               <ShoppingCart className="w-5 h-5 cursor-pointer hover:text-gray-500 text-white" />
+               <Search className="w-5 h-5 cursor-pointer hover:text-gray-500 text-gray-900" />
+               <ShoppingCart className="w-5 h-5 cursor-pointer hover:text-gray-500 text-gray-900" />
             </div>
          </div>
 
