@@ -1,0 +1,66 @@
+{
+   "title": "About Us",
+   "subtitle": "Get to know us",
+   "mission": {
+      "title": "Mission",
+      "content": "Our goal goes beyond entertainment. Huyền Hoàng aims to break down the prejudice about the distance between the past and the present. More importantly, we sincerely nurture national pride and love for history, while encouraging players to develop soft skills so that future generations can connect with their roots in the most profound and meaningful way.",
+      "image": "/imgs/About/mission.jpg"
+   },
+   "vision": {
+      "title": "Vision",
+      "content": "We envision Huyền Hoàng as a pioneering brand in the field of cultural and heritage educational entertainment in Vietnam, setting a new standard for products that are not only entertaining but also nurture a love of history in the community. By combining modern technology with creativity, Huyền Hoàng wants to recreate history, making Vietnamese heritage values more attractive, inspiring and engaging, both domestically and internationally.",
+      "image": "/imgs/About/vision.jpg"
+   },
+   "aboutUs": {
+      "title": "About Us",
+      "content": "M.ETA (Mystery – Education – Tradition – Art) is a startup project by 6 FPT University students. The main colors of this project are red-brown and yellow, conveying longevity and culture, inspired by the traditional Tam Quan gate, with the logo symbolizing Vietnamese culture and heritage. With the slogan \"When History meet Adventure\", we want to turn dry knowledge into an exciting journey, where Nguyen Dynasty culture and the spirit of \"our nation must know our history\" are vividly recreated.",
+      "teamImage": "/imgs/About/team.jpg"
+   },
+   "coreTeam": {
+      "title": "Core Team"
+   },
+   "teamMembers": [
+      {
+         "id": 1,
+         "name": "Đoàn Yến Ngọc",
+         "role": "CEO",
+         "description": "A visionary leader who guides the team to develop Huyền Hoàng into a leading board game brand. With management experience and a passion for games, she ensures every decision is oriented towards sustainable value for customers and the community.",
+         "avatar": "/imgs/About/ngoc.JPG"
+      },
+      {
+         "id": 2,
+         "name": "Trần Lê Viết Tài",
+         "role": "Marketing Lead",
+         "description": "A marketing expert with the ability to build brands and connect communities. He is responsible for developing marketing strategies, managing social media, and creating creative campaigns to bring Huyền Hoàng closer to players.",
+         "avatar": "/imgs/About/tai.JPG"
+      },
+      {
+         "id": 3,
+         "name": "Phan Thị Hoàng Oanh",
+         "role": "Operation Lead",
+         "description": "Ensures all operations run smoothly and efficiently. With excellent project management skills, she coordinates production, distribution, and customer service processes to deliver the best experience for players.",
+         "avatar": "/imgs/About/oanh.JPG"
+      },
+      {
+         "id": 4,
+         "name": "Lê Anh Khoa",
+         "role": "Creative Lead",
+         "description": "A talented artist with a passion for design and creativity. He is responsible for developing ideas, designing products, and creating unique visual experiences. Every board game bears his creative mark.",
+         "avatar": "/imgs/About/khoa.JPG"
+      },
+      {
+         "id": 5,
+         "name": "Nguyễn Thị Ngọc Linda",
+         "role": "Finance Lead",
+         "description": "A professional finance manager with the ability to analyze and plan finances effectively. She ensures transparency and sustainability in all financial activities, helping the company develop stably and sustainably.",
+         "avatar": "/imgs/About/lan.JPG"
+      },
+      {
+         "id": 6,
+         "name": "Lê Hoàng Hà",
+         "role": "Supply Chain Lead",
+         "description": "A supply chain management expert with experience in optimizing production and distribution processes. He ensures products are manufactured with the right quality and delivered on time to customers.",
+         "avatar": "/imgs/About/ha.JPG"
+      }
+   ]
+}

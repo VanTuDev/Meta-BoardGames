@@ -263,7 +263,7 @@ Answer briefly, clearly, and friendly. If you don't know the answer, say you wil
                                        key={idx}
                                        onClick={() => onSend(question)}
                                        disabled={loading}
-                                       className="w-full rounded-[18px] border border-[#F0C676]/30 bg-transparent px-3 py-2 text-left text-xs font-medium text-[#874C1A]/30 transition hover:opacity-60 hover:-translate-y-[1px] hover:border-[#9B4CFF]/40 hover:text-[#6A2A15]/40"
+                                       className="w-full rounded-[18px] border border-[#F0C676]/60 bg-white/40 px-3 py-2 text-left text-xs font-medium text-[#874C1A]/70 transition hover:opacity-100 hover:-translate-y-[1px] hover:border-[#9B4CFF]/80 hover:text-[#6A2A15] hover:bg-white/60 hover:shadow-md"
                                     >
                                        {question}
                                     </button>

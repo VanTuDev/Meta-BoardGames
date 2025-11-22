@@ -6,6 +6,7 @@ import "./index.css";
 import App from "./App.jsx";
 import PrivateLetter from "./pages/PrivateLetter.jsx";
 import CoutRound from "./pages/CoutRound.jsx";
+import About from "./pages/About.jsx";
 import { I18nProvider } from "./i18n.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -22,6 +23,9 @@ createRoot(document.getElementById("root")).render(
           {/* Trang đếm round */}
           <Route path="/cout-round" element={<CoutRound />} />
           <Route path="/cout-round/:round" element={<CoutRound />} />
+
+          {/* Trang giới thiệu thành viên */}
+          <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </I18nProvider>

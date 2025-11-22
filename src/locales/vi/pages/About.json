@@ -1,0 +1,66 @@
+{
+   "title": "Giới thiệu",
+   "subtitle": "Về chúng tôi",
+   "mission": {
+      "title": "Mission",
+      "content": "Mục tiêu của chúng tôi không chỉ dừng lại ở giải trí. Huyền Hoàng mong muốn xóa bỏ định kiến về sự xa cách giữa quá khứ và hiện tại. Quan trọng hơn, chúng tôi nuôi dưỡng lòng tự hào dân tộc và tình yêu lịch sử một cách chân thành, đồng thời khuyến khích người chơi rèn luyện các kỹ năng mềm để thế hệ tương lai có thể kết nối với cội nguồn một cách sâu sắc và ý nghĩa nhất.",
+      "image": "/imgs/About/mission.jpg"
+   },
+   "vision": {
+      "title": "Vision",
+      "content": "Chúng tôi định hướng Huyền Hoàng là một thương hiệu tiên phong trong lĩnh vực giáo dục giải trí văn hóa và di sản tại Việt Nam, thiết lập một chuẩn mực mới cho các sản phẩm không chỉ mang tính giải trí mà còn nuôi dưỡng tình yêu lịch sử trong cộng đồng. Bằng cách kết hợp công nghệ hiện đại với sự sáng tạo, Huyền Hoàng mong muốn tái hiện lịch sử, làm cho các giá trị di sản Việt Nam trở nên hấp dẫn, truyền cảm hứng và lôi cuốn hơn, cả trong nước và quốc tế.",
+      "image": "/imgs/About/vision.jpg"
+   },
+   "aboutUs": {
+      "title": "About Us",
+      "content": "M.ETA (Mystery – Education – Tradition – Art) là dự án khởi nghiệp của 6 sinh viên Đại học FPT. Màu sắc chủ đạo của dự án này là nâu đỏ và vàng truyền tải sự trường tồn, văn hóa, lấy cảm hứng từ cổng Tam Quan truyền thống, logo tượng trưng cho văn hóa và di sản Việt Nam. Với slogan \"When History meet Adventure\", chúng tôi mong muốn biết những kiến thức khô khan thành một hành trình thú vị, nơi văn hóa triều Nguyễn và tinh thần \"dân tộc ta phải biết sử ta\" được tái hiện sống động.",
+      "teamImage": "/imgs/About/team.jpg"
+   },
+   "coreTeam": {
+      "title": "Core Team"
+   },
+   "teamMembers": [
+      {
+         "id": 1,
+         "name": "Đoàn Yến Ngọc",
+         "role": "CEO",
+         "description": "Lãnh đạo với tầm nhìn chiến lược, dẫn dắt đội ngũ phát triển Huyền Hoàng trở thành thương hiệu board game hàng đầu. Với kinh nghiệm quản lý và đam mê trò chơi, cô đảm bảo mọi quyết định đều hướng tới giá trị bền vững cho khách hàng và cộng đồng.",
+         "avatar": "/imgs/About/ngoc.JPG"
+      },
+      {
+         "id": 2,
+         "name": "Trần Lê Viết Tài",
+         "role": "Marketing Lead",
+         "description": "Chuyên gia marketing với khả năng xây dựng thương hiệu và kết nối cộng đồng. Anh chịu trách nhiệm phát triển chiến lược tiếp thị, quản lý truyền thông xã hội và tạo ra những chiến dịch sáng tạo để đưa Huyền Hoàng đến gần hơn với người chơi.",
+         "avatar": "/imgs/About/tai.JPG"
+      },
+      {
+         "id": 3,
+         "name": "Phan Thị Hoàng Oanh",
+         "role": "Operation Lead",
+         "description": "Đảm bảo mọi hoạt động vận hành diễn ra suôn sẻ và hiệu quả. Với kỹ năng quản lý dự án xuất sắc, cô điều phối các quy trình sản xuất, phân phối và dịch vụ khách hàng để mang đến trải nghiệm tốt nhất cho người chơi.",
+         "avatar": "/imgs/About/oanh.JPG"
+      },
+      {
+         "id": 4,
+         "name": "Lê Anh Khoa",
+         "role": "Creative Lead",
+         "description": "Nghệ sĩ tài năng với đam mê thiết kế và sáng tạo. Anh chịu trách nhiệm phát triển ý tưởng, thiết kế sản phẩm và tạo ra những trải nghiệm thị giác độc đáo. Mỗi board game đều mang dấu ấn sáng tạo của anh.",
+         "avatar": "/imgs/About/khoa.JPG"
+      },
+      {
+         "id": 5,
+         "name": "Nguyễn Thị Ngọc Linda",
+         "role": "Finance Lead",
+         "description": "Quản lý tài chính chuyên nghiệp với khả năng phân tích và lập kế hoạch tài chính hiệu quả. Cô đảm bảo tính minh bạch và bền vững trong mọi hoạt động tài chính, giúp công ty phát triển ổn định và bền vững.",
+         "avatar": "/imgs/About/lan.JPG"
+      },
+      {
+         "id": 6,
+         "name": "Lê Hoàng Hà",
+         "role": "Supply Chain Lead",
+         "description": "Chuyên gia quản lý chuỗi cung ứng với kinh nghiệm trong việc tối ưu hóa quy trình sản xuất và phân phối. Anh đảm bảo sản phẩm được sản xuất đúng chất lượng và giao hàng đúng thời hạn đến tay khách hàng.",
+         "avatar": "/imgs/About/ha.JPG"
+      }
+   ]
+}

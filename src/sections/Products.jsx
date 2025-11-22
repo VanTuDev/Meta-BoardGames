@@ -32,7 +32,7 @@ const Products = () => {
    };
 
    return (
-      <section id="products" className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-12 bg-gradient-to-b from-white to-gray-50">
+      <section id="products" className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-12 bg-opacity-0 from-white to-gray-50">
          {/* Title */}
          <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -42,7 +42,7 @@ const Products = () => {
             className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-3"
          >
             <div className="max-w-xl">
-               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 bg-gradient-to-r from-[#90311e] to-[#610C40] bg-clip-text text-transparent">
+               <h2 className="text-2xl py-3 bg-red-200 sm:text-3xl md:text-4xl font-bold text-gray-900 bg-gradient-to-r from-[#90311e] to-[#610C40] bg-clip-text text-transparent">
                   {t("sections.Products.title")}
                </h2>
                <p className="text-sm sm:text-base text-gray-600 italic">
@@ -111,7 +111,7 @@ const Products = () => {
                      <img
                         src={product.hoverImg}
                         alt={`${product.name} Hover`}
-                        className="absolute top-0 left-0 w-full h-full object-contain bg-opacity-100 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                        className="absolute top-0 left-0 w-full h-full object-contain bg-red-600 transition-opacity duration-500 group-hover:opacity-100"
                      />
 
                      {/* Quick Buy button */}
@@ -144,8 +144,12 @@ const Products = () => {
                      </div>
 
                      {/* Description */}
-                     <p className="text-xs sm:text-sm text-gray-700 leading-relaxed mb-3 line-clamp-3">
-                        {product.description}
+                     <p className="text-xs bg-white sm:text-sm text-gray-700 leading-relaxed mb-3 line-clamp-3">
+                        <span className="bg-red-200">
+                           <span className="bg-white">
+                              {product.description}
+                           </span>
+                        </span>
                      </p>
 
                      {/* Material */}

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Search, ShoppingCart, Globe, ChevronDown, Menu, X } from "lucide-react";
 import { useI18n } from "../i18n";
 
 const Header = () => {
    const { t, locale, setLocale } = useI18n();
    const [open, setOpen] = useState(false);
+   const location = useLocation();
+   const navigate = useNavigate();
 
    // Khóa cuộn nền khi mở menu
    useEffect(() => {
@@ -17,19 +20,47 @@ const Header = () => {
 
    const closeMenu = () => setOpen(false);
 
+   // Hàm xử lý scroll đến section
+   const handleScrollToSection = (sectionId) => {
+      closeMenu();
+      if (location.pathname !== "/") {
+         // Nếu không ở trang chính, chuyển về trang chính
+         navigate("/");
+         // Đợi một chút để trang load xong rồi scroll
+         setTimeout(() => {
+            const element = document.getElementById(sectionId);
+            if (element) {
+               element.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+         }, 100);
+      } else {
+         // Nếu đang ở trang chính, scroll trực tiếp
+         const element = document.getElementById(sectionId);
+         if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+         }
+      }
+   };
+
    return (
-      <header className="sticky top-0 z-40 w-full border-b border-gray-200 bg-white/95 backdrop-blur">
+      <header className="sticky top-0 z-[100] w-full border-b border-gray-200 bg-white/95 backdrop-blur">
          <div className="max-w-7xl mx-auto flex justify-between items-center py-2 px-3 md:px-6">
 
             {/* Left Menu */}
             <nav className="hidden md:flex items-center space-x-6 font-sans text-sm">
-               <a href="#products" className="flex items-center hover:text-gray-500 font-bold">
+               <button
+                  onClick={() => handleScrollToSection("products")}
+                  className="flex items-center hover:text-gray-500 font-bold cursor-pointer text-white"
+               >
                   {t("components.Header.nav.products")} <ChevronDown className="w-4 h-4 ml-1" />
-               </a>
-               <a href="#collections" className="flex items-center hover:text-gray-500 font-bold">
+               </button>
+               <button
+                  onClick={() => handleScrollToSection("collections")}
+                  className="flex items-center hover:text-gray-500 font-bold cursor-pointer text-white"
+               >
                   {t("components.Header.nav.collections")} <ChevronDown className="w-4 h-4 ml-1" />
-               </a>
-               <a href="#about" className="hover:text-gray-500 font-bold">{t("components.Header.nav.about")}</a>
+               </button>
+               <Link to="/about" className="hover:text-gray-500 font-bold text-white">{t("components.Header.nav.about")}</Link>
             </nav>
 
             {/* Logo center */}
@@ -52,7 +83,7 @@ const Header = () => {
                >
                   <Menu className="w-6 h-6" />
                </button>
-               <a href="#" className="hidden md:block hover:text-gray-500 font-bold">{t("components.Header.nav.contact")}</a>
+               <a href="#" className="hidden md:block hover:text-gray-500 font-bold text-white">{t("components.Header.nav.contact")}</a>
                {/* Locale Switcher */}
                <div className="flex items-center gap-2">
                   <button
@@ -72,22 +103,22 @@ const Header = () => {
                      <span className="hidden md:inline">EN</span>
                   </button>
                </div>
-               <Search className="w-5 h-5 cursor-pointer hover:text-gray-500" />
-               <ShoppingCart className="w-5 h-5 cursor-pointer hover:text-gray-500" />
+               <Search className="w-5 h-5 cursor-pointer hover:text-gray-500 text-white" />
+               <ShoppingCart className="w-5 h-5 cursor-pointer hover:text-gray-500 text-white" />
             </div>
          </div>
 
          {/* Overlay */}
          {open && (
             <div
-               className="fixed inset-0 bg-black/40 z-40 md:hidden"
+               className="fixed inset-0 bg-black/40 z-[90] md:hidden"
                onClick={closeMenu}
             />
          )}
 
          {/* Drawer trái */}
          <aside
-            className={`fixed top-0 left-0 h-full w-72 bg-white z-50 transform transition-transform duration-300 md:hidden ${open ? "translate-x-0" : "-translate-x-full"
+            className={`fixed top-0 left-0 h-full w-72 bg-white z-[100] transform transition-transform duration-300 md:hidden ${open ? "translate-x-0" : "-translate-x-full"
                }`}
             aria-hidden={!open}
          >
@@ -97,10 +128,20 @@ const Header = () => {
                   <X className="w-6 h-6" />
                </button>
             </div>
-            <nav className="flex flex-col p-4 space-y-3 text-base">
-               <a href="#products" className="py-2 hover:text-gray-600" onClick={closeMenu}>{t("components.Header.nav.products")}</a>
-               <a href="#collections" className="py-2 hover:text-gray-600" onClick={closeMenu}>{t("components.Header.nav.collections")}</a>
-               <a href="#about" className="py-2 hover:text-gray-600" onClick={closeMenu}>{t("components.Header.nav.about")}</a>
+            <nav className="flex flex-col p-4 space-y-3 text-base bg-white">
+               <button
+                  onClick={() => handleScrollToSection("products")}
+                  className="py-2 hover:text-gray-600 text-left"
+               >
+                  {t("components.Header.nav.products")}
+               </button>
+               <button
+                  onClick={() => handleScrollToSection("collections")}
+                  className="py-2 hover:text-gray-600 text-left"
+               >
+                  {t("components.Header.nav.collections")}
+               </button>
+               <Link to="/about" className="py-2 hover:text-gray-600" onClick={closeMenu}>{t("components.Header.nav.about")}</Link>
                <div className="flex gap-3 pt-2">
                   <button className={`flex items-center gap-1 px-2 py-1 rounded-sm border ${locale === "vi" ? "border-[#5a442a]" : "border-gray-200"}`} onClick={() => setLocale("vi")}>
                      <img src="https://flagcdn.com/w20/vn.png" alt="VI" className="w-4 h-3" /> VI
