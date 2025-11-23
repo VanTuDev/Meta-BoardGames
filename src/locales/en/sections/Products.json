@@ -6,7 +6,8 @@
    "badge": {
       "preorder": "Pre-order",
       "new": "New",
-      "combo": "Combo"
+      "combo": "Combo",
+      "sale": "Sale"
    },
    "labels": {
       "players": "Players",
@@ -14,6 +15,7 @@
       "time": "Duration",
       "material": "Materials"
    },
+   "contactPrice": "Contact for price",
    "products": [
       {
          "id": 2,
@@ -26,6 +28,10 @@
          "material": "3-5mm polym wood, kraft paper, code lock",
          "badge": "New",
          "preorder": true,
+         "price": 569000,
+         "salePrice": 500000,
+         "salePercent": 12,
+         "sale": true,
          "img": "/imgs/Products/hoanghuyenboxgo.jpg",
          "hoverImg": "/imgs/Products/hoanghuyenboxgo.jpg",
          "layout": "vertical"
@@ -41,6 +47,10 @@
          "material": "3mm polym wood, character tokens",
          "badge": "New",
          "preorder": true,
+         "price": 330000,
+         "salePrice": 319000,
+         "salePercent": 3,
+         "sale": true,
          "img": "/imgs/Products/hoanhuyenmap.jpg",
          "hoverImg": "/imgs/Products/hoanhuyenmap.jpg",
          "layout": "horizontal"
@@ -56,6 +66,10 @@
          "material": "Deck includes: 24 character cards (6 Ministries), 16 special function cards, gold coins, and rulebook",
          "badge": "New",
          "preorder": true,
+         "price": 225000,
+         "salePrice": 219000,
+         "salePercent": 3,
+         "sale": true,
          "img": "/imgs/Products/HoangHuyenSetBox.jpg",
          "hoverImg": "/imgs/Products/HoangHuyenSetBox.jpg",
          "layout": "vertical"

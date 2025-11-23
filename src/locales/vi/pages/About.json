@@ -14,7 +14,7 @@
    "aboutUs": {
       "title": "About Us",
       "content": "M.ETA (Mystery – Education – Tradition – Art) là dự án khởi nghiệp của 6 sinh viên Đại học FPT. Màu sắc chủ đạo của dự án này là nâu đỏ và vàng truyền tải sự trường tồn, văn hóa, lấy cảm hứng từ cổng Tam Quan truyền thống, logo tượng trưng cho văn hóa và di sản Việt Nam. Với slogan \"When History meet Adventure\", chúng tôi mong muốn biết những kiến thức khô khan thành một hành trình thú vị, nơi văn hóa triều Nguyễn và tinh thần \"dân tộc ta phải biết sử ta\" được tái hiện sống động.",
-      "teamImage": "/imgs/About/team.jpg"
+      "teamImage": "/imgs/About/aboutteam.jpg"
    },
    "coreTeam": {
       "title": "Core Team"
@@ -50,7 +50,7 @@
       },
       {
          "id": 5,
-         "name": "Nguyễn Thị Ngọc Linda",
+         "name": "Nguyễn Thị Ngọc Lan",
          "role": "Finance Lead",
          "description": "Quản lý tài chính chuyên nghiệp với khả năng phân tích và lập kế hoạch tài chính hiệu quả. Cô đảm bảo tính minh bạch và bền vững trong mọi hoạt động tài chính, giúp công ty phát triển ổn định và bền vững.",
          "avatar": "/imgs/About/lan.JPG"

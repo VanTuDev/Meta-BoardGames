@@ -1,5 +1,30 @@
 {
-   "title": "Tôn vinh bàn tay & khối óc Việt Nam",
+   "title": "Học lịch sữ cùng M.ETA",
    "subtitle": "Nơi boardgame gặp gỡ sự tinh hoa thủ công.",
-   "button": "Khám phá ngay"
+   "button": "Tìm hiểu ngay",
+   "modal": {
+      "close": "Đóng",
+      "swipeNext": "← Vuốt để xem tiếp →",
+      "swipeBack": "← Vuốt để xem lại →",
+      "cards": [
+         {
+            "title": "HỌC LỊCH SỬ CÙNG M.ETA",
+            "content": "Vua Minh Mạng sinh ngày 25 tháng 5 năm 1791, là vị Hoàng đế thứ hai (ở ngôi từ 1820 đến 1841) của vương triều nhà Nguyễn. Trước khi mất, vua Gia Long đã di chiếu cho Hoàng tử Nguyễn Phúc Đảm nối ngôi. Ngày mồng Một tháng Giêng năm Canh Thìn (14-2-1820), Hoàng tử Đảm đã đăng quang, đặt niên hiệu là Minh Mạng. Nguyễn Phúc Đảm còn có tên gọi khác là Nguyễn Phúc Kiểu và ông là vị vua anh minh nhất của nhà Nguyễn. Vua Minh Mạng đã đóng góp cho đất nước thời bấy giờ rất nhiều chiến công vẻ vang mà có thể áp dụng đến tận bây giờ.",
+            "image": "/imgs/HeroParallax/history1.jpg",
+            "layout": "top"
+         },
+         {
+            "title": "HỌC LỊCH SỬ CÙNG M.ETA",
+            "content": "Hoàng đế Minh Mạng, không chỉ được hậu thế ngợi ca là bậc minh quân với tài năng trị quốc kiệt xuất, mà còn là chủ nhân của một kiệt tác kiến trúc bậc nhất thời Nguyễn. Lăng tẩm của Người – Hiếu Lăng – là sự thể hiện cô đọng và trang nghiêm nhất cho triết lý cai trị và cá tính của vị vua này. Toàn bộ Lăng Minh Mạng được xây dựng theo một bố cục đối xứng chặt chẽ trên một trục thần đạo xuyên suốt bắt đầu từ Đại Hồng Môn, Điện Sùng Ân, Minh Lâu, Hai Trụ Biểu và kết thúc tại Huyền Cung nơi các công trình được sắp xếp đăng đối qua trung tâm một cách hoàn hảo. Sự đăng đối và trật tự tuyệt đối này không chỉ là đỉnh cao của nghệ thuật tạo hình kiến trúc cảnh quan mà còn là sự khẳng định rõ nét về tính kỷ luật, quy phạm và tầm nhìn vĩ mô đã làm nên sự nghiệp của chính vị Hoàng đế.",
+            "image": "/imgs/HeroParallax/history2.png",
+            "layout": "right"
+         },
+         {
+            "title": "HỌC LỊCH SỬ CÙNG M.ETA",
+            "content": "Chức năng, nhiệm vụ của Lục bộ Lục bộ là một thiết chế quyền lực được phỏng theo mô hình bộ máy nhà nước thời Đường, đã được hoàn thiện dưới thời Lê Thánh Tông và được Gia Long kế tục. Tuy nhiên đến Minh Mệnh thì chức năng, nhiệm vụ của Lục bộ có được quy định lại chặt chẽ hơn, rõ ràng hơn. So với Lý, Trần, Lê nhiệm vụ Lục Bộ triều Nguyễn được quy định một cách chi tiết, cụ thể hơn Minh Mạng nổi tiếng với những cải cách sâu sắc và toàn diện từ trung ương đến địa phương, từ chính trị đến kinh tế. Bộ máy cai trị dưới thời Minh Mạng đã đạt đến mức độ hoàn chỉnh nhất, chặt chẽ nhất trong lịch sử các triều đại phong kiến Việt Nam.",
+            "image": "/imgs/HeroParallax/history3.jpg",
+            "layout": "left"
+         }
+      ]
+   }
 }

@@ -1,5 +1,30 @@
 {
    "title": "Honoring Vietnamese craftsmanship & intellect",
    "subtitle": "Where boardgames meet artisan excellence.",
-   "button": "Discover now"
+   "button": "Discover now",
+   "modal": {
+      "close": "Close",
+      "swipeNext": "← Swipe to continue →",
+      "swipeBack": "← Swipe to go back →",
+      "cards": [
+         {
+            "title": "LEARN HISTORY WITH M.ETA",
+            "content": "Emperor Minh Mạng was born on May 25, 1791, and was the second emperor (reigned from 1820 to 1841) of the Nguyễn Dynasty. Before his death, Emperor Gia Long had bequeathed the throne to Crown Prince Nguyễn Phúc Đảm. On the first day of the first month of the Canh Thìn year (February 14, 1820), Crown Prince Đảm ascended the throne, taking the era name Minh Mạng. Nguyễn Phúc Đảm was also known as Nguyễn Phúc Kiểu, and he was the most enlightened emperor of the Nguyễn Dynasty. Emperor Minh Mạng contributed many glorious achievements to the country at that time, which can still be applied today.",
+            "image": "/imgs/HeroParallax/history1.jpg",
+            "layout": "top"
+         },
+         {
+            "title": "LEARN HISTORY WITH M.ETA",
+            "content": "Emperor Minh Mạng was not only praised by posterity as a wise ruler with outstanding governance talents, but also the owner of one of the greatest architectural masterpieces of the Nguyễn period. His tomb – Hiếu Lăng – is the most condensed and solemn expression of this emperor's governance philosophy and personality. The entire Minh Mạng Tomb was built according to a strictly symmetrical layout on a central axis running from Đại Hồng Môn, Điện Sùng Ân, Minh Lâu, Hai Trụ Biểu, and ending at Huyền Cung, where the structures are arranged symmetrically around the center in perfect harmony. This absolute symmetry and order is not only the pinnacle of landscape architectural art but also a clear affirmation of the discipline, norms, and macro vision that made the career of this very emperor.",
+            "image": "/imgs/HeroParallax/history2.png",
+            "layout": "right"
+         },
+         {
+            "title": "LEARN HISTORY WITH M.ETA",
+            "content": "The Six Ministries (Lục Bộ) is a power institution modeled after the state apparatus of the Tang Dynasty, perfected under Lê Thánh Tông and continued by Gia Long. However, under Minh Mạng, the functions and duties of the Six Ministries were regulated more strictly and clearly. Compared to the Lý, Trần, and Lê dynasties, the duties of the Nguyễn Dynasty's Six Ministries were regulated in more detail and specificity. Minh Mạng was famous for his profound and comprehensive reforms from central to local levels, from politics to economics. The administrative apparatus under Minh Mạng reached the most complete and strictest level in the history of Vietnamese feudal dynasties.",
+            "image": "/imgs/HeroParallax/history3.jpg",
+            "layout": "left"
+         }
+      ]
+   }
 }

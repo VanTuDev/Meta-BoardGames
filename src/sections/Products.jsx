@@ -3,6 +3,60 @@ import { useI18n } from "../i18n";
 import { motion } from "framer-motion";
 import { Users, Clock, Calendar, Package } from "lucide-react";
 
+// Component hiển thị giá sản phẩm
+const PriceDisplay = ({ price, salePrice, salePercent, isVertical = false, t }) => {
+   const formatPrice = (amount) => {
+      return new Intl.NumberFormat('vi-VN', {
+         style: 'currency',
+         currency: 'VND',
+         minimumFractionDigits: 0,
+      }).format(amount);
+   };
+
+   // Nếu không có giá
+   if (!price) {
+      return (
+         <div className={`${isVertical ? 'mt-2' : 'mt-3'}`}>
+            <span className="text-base sm:text-lg font-semibold text-gray-600 italic">
+               {t("sections.Products.contactPrice") || "Liên hệ để biết giá"}
+            </span>
+         </div>
+      );
+   }
+
+   const hasSale = salePrice && salePrice < price;
+
+   if (hasSale) {
+      return (
+         <div className={`flex flex-col gap-1 ${isVertical ? 'mt-2' : 'mt-3'}`}>
+            <div className="flex items-center gap-2 flex-wrap">
+               <span className="text-lg sm:text-xl md:text-2xl font-bold text-[#ef4848]">
+                  {formatPrice(salePrice)}
+               </span>
+               {salePercent && (
+                  <span className="bg-gradient-to-r from-[#ef4848] to-[#d63031] text-white text-xs font-bold px-2 py-1 rounded-full">
+                     -{salePercent}%
+                  </span>
+               )}
+            </div>
+            <div className="flex items-center gap-2">
+               <span className="text-sm sm:text-base text-gray-400 line-through">
+                  {formatPrice(price)}
+               </span>
+            </div>
+         </div>
+      );
+   }
+
+   return (
+      <div className={`${isVertical ? 'mt-2' : 'mt-3'}`}>
+         <span className="text-lg sm:text-xl md:text-2xl font-bold text-[#90311e]">
+            {formatPrice(price)}
+         </span>
+      </div>
+   );
+};
+
 const Products = () => {
    const { t, locale } = useI18n();
    const products = t("sections.Products.products") || [];
@@ -99,6 +153,11 @@ const Products = () => {
                               {t("sections.Products.badge.new")}
                            </span>
                         )}
+                        {product.sale === true && (
+                           <span className="bg-gradient-to-r from-[#ff6b6b] to-[#ee5a6f] text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md animate-pulse">
+                              {t("sections.Products.badge.sale")}
+                           </span>
+                        )}
                      </div>
 
                      {/* Main image */}
@@ -111,7 +170,7 @@ const Products = () => {
                      <img
                         src={product.hoverImg}
                         alt={`${product.name} Hover`}
-                        className="absolute top-0 left-0 w-full h-full object-contain bg-red-600 transition-opacity duration-500 group-hover:opacity-100"
+                        className="absolute top-0 left-0 w-full h-full object-contain bg-opacity-20 transition-opacity duration-500 group-hover:opacity-100"
                      />
 
                      {/* Quick Buy button */}
@@ -143,8 +202,17 @@ const Products = () => {
                         </div>
                      </div>
 
+                     {/* Price */}
+                     <PriceDisplay
+                        price={product.price}
+                        salePrice={product.salePrice}
+                        salePercent={product.salePercent}
+                        isVertical={true}
+                        t={t}
+                     />
+
                      {/* Description */}
-                     <p className="text-xs bg-white sm:text-sm text-gray-700 leading-relaxed mb-3 line-clamp-3">
+                     <p className="text-xs bg-white sm:text-sm text-gray-700 leading-relaxed mb-3 mt-3 line-clamp-3">
                         <span className="bg-red-200">
                            <span className="bg-white">
                               {product.description}
@@ -183,6 +251,11 @@ const Products = () => {
                            {product.badge && product.badge === "New" && (
                               <span className="bg-gradient-to-r from-[#ef4848] to-[#d63031] text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md">
                                  {t("sections.Products.badge.new")}
+                              </span>
+                           )}
+                           {product.salePrice && product.salePrice < product.price && (
+                              <span className="bg-gradient-to-r from-[#ff6b6b] to-[#ee5a6f] text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md animate-pulse">
+                                 {t("sections.Products.badge.sale")}
                               </span>
                            )}
                         </div>
@@ -229,8 +302,17 @@ const Products = () => {
                            </div>
                         </div>
 
+                        {/* Price */}
+                        <PriceDisplay
+                           price={product.price}
+                           salePrice={product.salePrice}
+                           salePercent={product.salePercent}
+                           isVertical={false}
+                           t={t}
+                        />
+
                         {/* Description */}
-                        <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 line-clamp-4">
+                        <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 mt-3 line-clamp-4">
                            {product.description}
                         </p>
 

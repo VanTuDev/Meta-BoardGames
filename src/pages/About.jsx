@@ -63,7 +63,7 @@ const About = () => {
    const vision = t("pages.About.vision");
    const aboutUs = t("pages.About.aboutUs");
    const coreTeam = t("pages.About.coreTeam");
-   const teamMembers = t("pages.About.teamMembers") || [];
+   const teamMembers = t("pages.About.teamMembers");
 
    return (
       <div className="font-sans text-gray-900 overflow-x-hidden min-h-screen flex flex-col">
@@ -91,7 +91,7 @@ const About = () => {
                {/* SO LE SECTIONS */}
                <ZigZagSection index={0} title={mission.title} text={mission.content} image={mission.image || "/images/mission.jpg"} />
                <ZigZagSection index={1} title={vision.title} text={vision.content} image={vision.image || "/images/vision.jpg"} />
-               <ZigZagSection index={2} title={aboutUs.title} text={aboutUs.content} image={aboutUs.teamImage || "/images/about.jpg"} />
+               <ZigZagSection index={2} title={aboutUs.title} text={aboutUs.content} image={aboutUs.teamImage || "/imgs/About/aboutteam.jpg"} />
 
                {/* CORE TEAM TITLE */}
                <motion.h2
@@ -104,23 +104,21 @@ const About = () => {
                   {coreTeam.title}
                </motion.h2>
 
-               {/* CORE TEAM — ĐỂ NGUYÊN BẢN THEO YÊU CẦU */}
+               {/* CORE TEAM — CAROUSEL 6 ẢNH */}
                <Swiper
                   modules={[Autoplay, Navigation]}
                   spaceBetween={20}
-                  slidesPerView={4}
-                  loop={true}
-                  autoplay={{
-                     delay: 3000,
-                     disableOnInteraction: false,
-                     pauseOnMouseEnter: true,
-                  }}
+                  slidesPerView={3}
+                  loop={false}
+                  autoplay={false}
                   navigation={true}
                   breakpoints={{
                      320: { slidesPerView: 1 },
                      640: { slidesPerView: 2 },
                      768: { slidesPerView: 3 },
                      1024: { slidesPerView: 4 },
+                     1280: { slidesPerView: 5 },
+                     1536: { slidesPerView: 6 },
                   }}
                   className="!pb-14"
                >
@@ -131,7 +129,7 @@ const About = () => {
                            whileInView={{ opacity: 1, y: 0 }}
                            viewport={{ once: true }}
                            transition={{ duration: 0.6 }}
-                           className="bg-white rounded-xl shadow-lg hover:shadow-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:-translate-y-2"
+                           className="bg-white rounded-xl shadow-lg hover:shadow-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:-translate-y-2 h-full"
                         >
                            <div className="relative w-full aspect-[3/4] overflow-hidden">
                               {member.avatar ? (
