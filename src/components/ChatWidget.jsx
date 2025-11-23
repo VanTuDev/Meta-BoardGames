@@ -93,12 +93,12 @@ const ChatWidget = () => {
          const context = products.map((p) => {
             return `- ${p.name}: ${p.category}. ${p.description} Số người chơi: ${p.players}, Độ tuổi: ${p.age}, Thời gian: ${p.time}. Chất liệu: ${p.material}.`;
          }).join("\n");
-         return `Thông tin về các sản phẩm Huyền Hoàng:\n${context}\n\nHuyền Hoàng là một bộ board games về lịch sử và văn hóa Việt Nam thời Nguyễn, được phát triển bởi Maztermind.`;
+         return `Thông tin về các sản phẩm Huyền Hoàng:\n${context}\n\nHuyền Hoàng là một bộ board games về lịch sử và văn hóa Việt Nam thời Nguyễn, được phát triển bởi M.ETA.`;
       } else {
          const context = products.map((p) => {
             return `- ${p.name}: ${p.category}. ${p.description} Players: ${p.players}, Age: ${p.age}, Duration: ${p.time}. Materials: ${p.material}.`;
          }).join("\n");
-         return `Information about Huyền Hoàng products:\n${context}\n\nHuyền Hoàng is a board game series about Vietnamese history and culture during the Nguyễn Dynasty, developed by Maztermind.`;
+         return `Information about Huyền Hoàng products:\n${context}\n\nHuyền Hoàng is a board game series about Vietnamese history and culture during the Nguyễn Dynasty, developed by M.ETA.`;
       }
    };
 
@@ -115,24 +115,24 @@ const ChatWidget = () => {
 
          const productsContext = getProductsContext();
          const systemPrompt = locale === "vi"
-            ? `Bạn là trợ lý AI chuyên tư vấn về các sản phẩm board games Huyền Hoàng của Maztermind. Hãy trả lời câu hỏi của khách hàng một cách thân thiện và chuyên nghiệp bằng tiếng Việt.
+            ? `Bạn là trợ lý AI chuyên tư vấn về các sản phẩm board games Huyền Hoàng của M.ETA. Hãy trả lời câu hỏi của khách hàng một cách thân thiện và chuyên nghiệp bằng tiếng Việt.
 
 ${productsContext}
 
 Một số câu hỏi thường gặp:
 - "Huyền Hoàng là gì?" hoặc "Huyền Hoàng là gì": Huyền Hoàng là bộ board games về lịch sử và văn hóa Việt Nam thời Nguyễn, bao gồm 3 sản phẩm chính: Huyền Hoàng Box, Huyền Hoàng Map, và Huyền Hoàng Card.
 - "Các sản phẩm huyền hoàng" hoặc "sản phẩm": Hiện tại có 3 sản phẩm: Huyền Hoàng Box (Giải đố – Phiêu lưu khám phá), Huyền Hoàng Map (Khám phá - Nhập vai - Giáo dục), và Huyền Hoàng Card (Chiến thuật – Suy luận – Đấu trí).
-- "Ai là người sáng lập ra trò chơi này" hoặc "ai tạo ra": Huyền Hoàng được phát triển bởi công ty Maztermind.
+- "Ai là người sáng lập ra trò chơi này" hoặc "ai tạo ra": Huyền Hoàng được phát triển bởi công ty M.ETA.
 
 Hãy trả lời ngắn gọn, dễ hiểu và thân thiện. Nếu không biết câu trả lời, hãy nói bạn sẽ tìm hiểu thêm.`
-            : `You are an AI assistant specializing in Huyền Hoàng board games products from Maztermind. Answer customer questions in a friendly and professional manner in English.
+            : `You are an AI assistant specializing in Huyền Hoàng board games products from M.ETA. Answer customer questions in a friendly and professional manner in English.
 
 ${productsContext}
 
 Common questions:
 - "What is Huyền Hoàng?" or "What is Huyen Hoang": Huyền Hoàng is a board game series about Vietnamese history and culture during the Nguyễn Dynasty, including 3 main products: Huyền Hoàng Box, Huyền Hoàng Map, and Huyền Hoàng Card.
 - "Huyền Hoàng products" or "products": Currently there are 3 products: Huyền Hoàng Box (Puzzle – Adventure Exploration), Huyền Hoàng Map (Exploration - Role-playing - Education), and Huyền Hoàng Card (Strategy – Deduction – Mind Games).
-- "Who created this game" or "who made": Huyền Hoàng is developed by Maztermind company.
+- "Who created this game" or "who made": Huyền Hoàng is developed by M.ETA company.
 
 Answer briefly, clearly, and friendly. If you don't know the answer, say you will find out more.`;
 

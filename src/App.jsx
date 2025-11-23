@@ -19,7 +19,9 @@ function App() {
       <main>
         <Carousel />
         <Products />
-        <Collections />
+        <div className="p-0">
+          <Collections />
+        </div>
         <Benefits />
         <MarqueeText />
         <HeroParallax />
