@@ -28,10 +28,8 @@
          "material": "3-5mm polym wood, kraft paper, code lock",
          "badge": "New",
          "preorder": true,
-         "price": 569000,
-         "salePrice": 500000,
-         "salePercent": 12,
-         "sale": true,
+         "price": 1919000,
+         "sale": false,
          "img": "/imgs/Products/hoanghuyenboxgo.jpg",
          "hoverImg": "/imgs/Products/hoanghuyenboxgo.jpg",
          "layout": "vertical"

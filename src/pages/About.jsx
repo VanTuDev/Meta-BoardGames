@@ -104,11 +104,11 @@ const About = () => {
                   {coreTeam.title}
                </motion.h2>
 
-               {/* CORE TEAM — CAROUSEL 6 ẢNH */}
+               {/* CORE TEAM — CAROUSEL 4 ẢNH */}
                <Swiper
                   modules={[Autoplay, Navigation]}
                   spaceBetween={20}
-                  slidesPerView={3}
+                  slidesPerView={4}
                   loop={false}
                   autoplay={false}
                   navigation={true}
@@ -117,10 +117,8 @@ const About = () => {
                      640: { slidesPerView: 2 },
                      768: { slidesPerView: 3 },
                      1024: { slidesPerView: 4 },
-                     1280: { slidesPerView: 5 },
-                     1536: { slidesPerView: 6 },
                   }}
-                  className="!pb-14"
+                  className="!pb-14 core-team-swiper"
                >
                   {teamMembers.map((member) => (
                      <SwiperSlide key={member.id}>

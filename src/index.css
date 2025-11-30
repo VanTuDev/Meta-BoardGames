@@ -134,3 +134,26 @@ h6 {
 .history-flashcard-swiper .swiper-button-prev {
    display: none !important;
 }
+
+/* Core Team Swiper Navigation - màu đỏ đô */
+.core-team-swiper .swiper-button-next,
+.core-team-swiper .swiper-button-prev {
+   color: #90311e !important;
+   background: rgba(144, 49, 30, 0.1);
+   width: 40px !important;
+   height: 40px !important;
+   border-radius: 50%;
+   transition: all 0.3s ease;
+}
+
+.core-team-swiper .swiper-button-next:hover,
+.core-team-swiper .swiper-button-prev:hover {
+   background: rgba(144, 49, 30, 0.2);
+   transform: scale(1.1);
+}
+
+.core-team-swiper .swiper-button-next::after,
+.core-team-swiper .swiper-button-prev::after {
+   font-size: 18px !important;
+   font-weight: bold;
+}

@@ -224,7 +224,7 @@ const HeroParallax = () => {
 
             <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
                <FadeInSection>
-                  <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
+                  <h1 className="text-6xl md:text-8xl font-bold text-white drop-shadow-lg">
                      {t("sections.HeroParallax.title")}
                   </h1>
                </FadeInSection>
@@ -238,8 +238,8 @@ const HeroParallax = () => {
                <FadeInSection delay={0.6}>
                   <button
                      onClick={() => setIsModalOpen(true)}
-                     className="mt-6 px-8 py-3 bg-[#5a442a] text-white rounded-lg 
-                              hover:bg-[#3e2f1e] transition shadow-lg"
+                     className="mt-6 px-8 py-3 bg-[#90311e] text-white rounded-lg 
+                              hover:bg-[#7a2818] transition shadow-lg"
                   >
                      {t("sections.HeroParallax.button")}
                   </button>
