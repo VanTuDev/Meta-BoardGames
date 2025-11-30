@@ -30,14 +30,9 @@ const PriceDisplay = ({ price, salePrice, salePercent, isVertical = false, t }) 
       return (
          <div className={`flex flex-col gap-1 ${isVertical ? 'mt-2' : 'mt-3'}`}>
             <div className="flex items-center gap-2 flex-wrap">
-               <span className="text-lg sm:text-xl md:text-2xl font-bold text-[#ef4848]">
+               <span className="text-lg sm:text-xl md:text-2xl font-bold text-[#90311e]">
                   {formatPrice(salePrice)}
                </span>
-               {salePercent && (
-                  <span className="bg-gradient-to-r from-[#ef4848] to-[#d63031] text-white text-xs font-bold px-2 py-1 rounded-full">
-                     -{salePercent}%
-                  </span>
-               )}
             </div>
             <div className="flex items-center gap-2">
                <span className="text-sm sm:text-base text-gray-400 line-through">
