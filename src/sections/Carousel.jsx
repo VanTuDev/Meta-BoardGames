@@ -71,7 +71,7 @@ const Carousel = () => {
             <SwiperSlide>
                <div className="relative w-full flex items-center justify-center bg-gray-100 h-[250px] xs:h-[280px] sm:h-[380px] md:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px]">
                   <img
-                     src="/imgs/Carousel/CarouselBaner.webp"
+                     src="/imgs/Carousel/banner.jpg"
                      alt="Banner 1"
                      className="w-full h-full object-contain object-center max-w-full max-h-full"
                      loading="eager" // slide đầu tiên load ngay
@@ -81,7 +81,7 @@ const Carousel = () => {
             </SwiperSlide>
 
             {/* Slide 2 */}
-            <SwiperSlide>
+            {/* <SwiperSlide>
                <div className="relative w-full flex items-center justify-center bg-gray-100 h-[250px] xs:h-[280px] sm:h-[380px] md:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px]">
                   <img
                      src="/imgs/Carousel/CarouselBaner2.webp"
@@ -90,7 +90,7 @@ const Carousel = () => {
                      loading="lazy" // slide sau load lazy
                   />
                </div>
-            </SwiperSlide>
+            </SwiperSlide> */}
          </Swiper>
       </div>
    );

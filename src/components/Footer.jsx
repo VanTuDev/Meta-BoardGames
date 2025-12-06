@@ -54,10 +54,14 @@ const Footer = () => {
          {/* Middle: Company Info compact */}
          <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 pb-4 sm:pb-5 md:pb-6 text-[10px] sm:text-xs text-gray-700">
             <p className="font-semibold mb-0.5 sm:mb-1">{t("components.Footer.company.name")}</p>
-            <p className="leading-tight">{t("components.Footer.company.address")}</p>
-            <div className="mt-2 sm:mt-3">
-               <img src="/imgs/Footer/boCongThuong.png" alt={t("components.Footer.company.certificate")} className="h-6 sm:h-7 md:h-8 lg:h-10" />
-            </div>
+            {t("components.Footer.company.address") && (
+               <p className="leading-tight">{t("components.Footer.company.address")}</p>
+            )}
+            {t("components.Footer.company.certificate") && (
+               <div className="mt-2 sm:mt-3">
+                  <img src="/imgs/Footer/boCongThuong.png" alt={t("components.Footer.company.certificate")} className="h-6 sm:h-7 md:h-8 lg:h-10" />
+               </div>
+            )}
          </div>
 
          {/* Bottom bar */}

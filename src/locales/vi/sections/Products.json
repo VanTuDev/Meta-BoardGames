@@ -16,6 +16,25 @@
       "material": "Chất liệu"
    },
    "contactPrice": "Liên hệ để biết giá",
+   "orderModal": {
+      "title": "Đặt hàng nhanh",
+      "productName": "Sản phẩm",
+      "customerName": "Tên người mua",
+      "customerNamePlaceholder": "Nhập tên của bạn",
+      "phone": "Số điện thoại",
+      "phonePlaceholder": "Nhập số điện thoại",
+      "facebook": "Link Facebook",
+      "facebookPlaceholder": "Nhập link Facebook (tùy chọn)",
+      "confirm": "Xác nhận",
+      "cancel": "Hủy",
+      "required": "Trường này là bắt buộc",
+      "invalidPhone": "Số điện thoại không hợp lệ"
+   },
+   "successPopup": {
+      "title": "Đặt hàng thành công",
+      "message": "Chúng tôi sẽ liên hệ với bạn sớm nhất",
+      "close": "Đóng"
+   },
    "products": [
       {
          "id": 2,

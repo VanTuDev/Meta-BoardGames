@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Search, ShoppingCart, Globe, ChevronDown, Menu, X } from "lucide-react";
+import { Globe, ChevronDown, Menu, X } from "lucide-react";
 import { useI18n } from "../i18n";
 
 const Header = () => {
@@ -54,12 +54,6 @@ const Header = () => {
                >
                   {t("components.Header.nav.products")} <ChevronDown className="w-4 h-4 ml-1" />
                </button>
-               <button
-                  onClick={() => handleScrollToSection("collections")}
-                  className="flex items-center hover:text-gray-500 font-bold cursor-pointer text-gray-900"
-               >
-                  {t("components.Header.nav.collections")} <ChevronDown className="w-4 h-4 ml-1" />
-               </button>
                <Link to="/about" className="hover:text-gray-500 font-bold text-gray-900">{t("components.Header.nav.about")}</Link>
             </nav>
 
@@ -83,7 +77,14 @@ const Header = () => {
                >
                   <Menu className="w-6 h-6" />
                </button>
-               <a href="#" className="hidden md:block hover:text-gray-500 font-bold text-gray-900">{t("components.Header.nav.contact")}</a>
+               <a
+                  href="https://www.facebook.com/profile.php?id=61581090817119"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden md:block hover:text-gray-500 font-bold text-gray-900"
+               >
+                  {t("components.Header.nav.contact")}
+               </a>
                {/* Locale Switcher */}
                <div className="flex items-center gap-2">
                   <button
@@ -103,8 +104,6 @@ const Header = () => {
                      <span className="hidden md:inline">EN</span>
                   </button>
                </div>
-               <Search className="w-5 h-5 cursor-pointer hover:text-gray-500 text-gray-900" />
-               <ShoppingCart className="w-5 h-5 cursor-pointer hover:text-gray-500 text-gray-900" />
             </div>
          </div>
 
@@ -135,13 +134,16 @@ const Header = () => {
                >
                   {t("components.Header.nav.products")}
                </button>
-               <button
-                  onClick={() => handleScrollToSection("collections")}
-                  className="py-2 hover:text-gray-600 text-left"
-               >
-                  {t("components.Header.nav.collections")}
-               </button>
                <Link to="/about" className="py-2 hover:text-gray-600" onClick={closeMenu}>{t("components.Header.nav.about")}</Link>
+               <a
+                  href="https://www.facebook.com/profile.php?id=61581090817119"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-2 hover:text-gray-600"
+                  onClick={closeMenu}
+               >
+                  {t("components.Header.nav.contact")}
+               </a>
                <div className="flex gap-3 pt-2">
                   <button className={`flex items-center gap-1 px-2 py-1 rounded-sm border ${locale === "vi" ? "border-[#5a442a]" : "border-gray-200"}`} onClick={() => setLocale("vi")}>
                      <img src="https://flagcdn.com/w20/vn.png" alt="VI" className="w-4 h-3" /> VI

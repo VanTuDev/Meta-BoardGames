@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useI18n } from "../i18n";
-import { motion } from "framer-motion";
-import { Users, Clock, Calendar, Package } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Users, Clock, Calendar, Package, X, CheckCircle } from "lucide-react";
 
 // Component hiển thị giá sản phẩm
 const PriceDisplay = ({ price, salePrice, salePercent, isVertical = false, t }) => {
@@ -52,8 +52,256 @@ const PriceDisplay = ({ price, salePrice, salePercent, isVertical = false, t }) 
    );
 };
 
+// ============================================================
+// ORDER MODAL COMPONENT
+// ============================================================
+const OrderModal = ({ isOpen, onClose, product, t, onSuccess }) => {
+   const [formData, setFormData] = useState({
+      customerName: "",
+      phone: "",
+      facebook: ""
+   });
+   const [errors, setErrors] = useState({});
+
+   const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData(prev => ({ ...prev, [name]: value }));
+      // Clear error when user starts typing
+      if (errors[name]) {
+         setErrors(prev => ({ ...prev, [name]: "" }));
+      }
+   };
+
+   const validatePhone = (phone) => {
+      // Vietnamese phone number validation (10-11 digits, may start with 0 or +84)
+      const phoneRegex = /^(\+84|0)[0-9]{9,10}$/;
+      return phoneRegex.test(phone.replace(/\s/g, ""));
+   };
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      const newErrors = {};
+
+      // Validate customer name
+      if (!formData.customerName.trim()) {
+         newErrors.customerName = t("sections.Products.orderModal.required");
+      }
+
+      // Validate phone
+      if (!formData.phone.trim()) {
+         newErrors.phone = t("sections.Products.orderModal.required");
+      } else if (!validatePhone(formData.phone)) {
+         newErrors.phone = t("sections.Products.orderModal.invalidPhone");
+      }
+
+      if (Object.keys(newErrors).length > 0) {
+         setErrors(newErrors);
+         return;
+      }
+
+      // Submit form (here you can add API call)
+      console.log("Order submitted:", { product, ...formData });
+
+      // Reset form
+      setFormData({ customerName: "", phone: "", facebook: "" });
+      setErrors({});
+
+      // Close modal
+      onClose();
+
+      // Trigger success callback
+      if (onSuccess) {
+         onSuccess();
+      }
+   };
+
+   if (!isOpen) return null;
+
+   return (
+      <AnimatePresence>
+         {isOpen && (
+            <>
+               {/* Backdrop */}
+               <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={onClose}
+                  className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[9998] cursor-pointer"
+               />
+
+               {/* Modal */}
+               <motion.div
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="fixed inset-0 z-[9999] flex items-center justify-center p-4 pointer-events-none"
+               >
+                  <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 pointer-events-auto max-h-[90vh] overflow-y-auto">
+                     {/* Header */}
+                     <div className="flex items-center justify-between mb-6">
+                        <h2 className="text-2xl font-bold text-[#90311e]">
+                           {t("sections.Products.orderModal.title")}
+                        </h2>
+                        <button
+                           onClick={onClose}
+                           className="p-2 rounded-full hover:bg-gray-100 transition"
+                           aria-label="Close"
+                        >
+                           <X className="w-5 h-5 text-gray-600" />
+                        </button>
+                     </div>
+
+                     {/* Product Info */}
+                     {product && (
+                        <div className="mb-6 p-4 bg-gray-50 rounded-lg">
+                           <p className="text-sm text-gray-600 mb-1">
+                              {t("sections.Products.orderModal.productName")}:
+                           </p>
+                           <p className="text-lg font-semibold text-[#90311e]">
+                              {product.name}
+                           </p>
+                        </div>
+                     )}
+
+                     {/* Form */}
+                     <form onSubmit={handleSubmit} className="space-y-4">
+                        {/* Customer Name */}
+                        <div>
+                           <label className="block text-sm font-semibold text-gray-700 mb-2">
+                              {t("sections.Products.orderModal.customerName")} <span className="text-red-500">*</span>
+                           </label>
+                           <input
+                              type="text"
+                              name="customerName"
+                              value={formData.customerName}
+                              onChange={handleChange}
+                              placeholder={t("sections.Products.orderModal.customerNamePlaceholder")}
+                              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#90311e] ${errors.customerName ? "border-red-500" : "border-gray-300"
+                                 }`}
+                           />
+                           {errors.customerName && (
+                              <p className="mt-1 text-sm text-red-500">{errors.customerName}</p>
+                           )}
+                        </div>
+
+                        {/* Phone */}
+                        <div>
+                           <label className="block text-sm font-semibold text-gray-700 mb-2">
+                              {t("sections.Products.orderModal.phone")} <span className="text-red-500">*</span>
+                           </label>
+                           <input
+                              type="tel"
+                              name="phone"
+                              value={formData.phone}
+                              onChange={handleChange}
+                              placeholder={t("sections.Products.orderModal.phonePlaceholder")}
+                              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#90311e] ${errors.phone ? "border-red-500" : "border-gray-300"
+                                 }`}
+                           />
+                           {errors.phone && (
+                              <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+                           )}
+                        </div>
+
+                        {/* Facebook */}
+                        <div>
+                           <label className="block text-sm font-semibold text-gray-700 mb-2">
+                              {t("sections.Products.orderModal.facebook")}
+                           </label>
+                           <input
+                              type="url"
+                              name="facebook"
+                              value={formData.facebook}
+                              onChange={handleChange}
+                              placeholder={t("sections.Products.orderModal.facebookPlaceholder")}
+                              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#90311e]"
+                           />
+                        </div>
+
+                        {/* Buttons */}
+                        <div className="flex gap-3 mt-6">
+                           <button
+                              type="button"
+                              onClick={onClose}
+                              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition font-semibold"
+                           >
+                              {t("sections.Products.orderModal.cancel")}
+                           </button>
+                           <button
+                              type="submit"
+                              className="flex-1 px-4 py-2 bg-[#90311e] text-white rounded-lg hover:bg-[#7a2818] transition font-semibold"
+                           >
+                              {t("sections.Products.orderModal.confirm")}
+                           </button>
+                        </div>
+                     </form>
+                  </div>
+               </motion.div>
+            </>
+         )}
+      </AnimatePresence>
+   );
+};
+
+// ============================================================
+// SUCCESS POPUP COMPONENT
+// ============================================================
+const SuccessPopup = ({ isOpen, onClose, t }) => {
+   if (!isOpen) return null;
+
+   return (
+      <AnimatePresence>
+         {isOpen && (
+            <>
+               {/* Backdrop */}
+               <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={onClose}
+                  className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[10000] cursor-pointer"
+               />
+
+               {/* Popup */}
+               <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="fixed inset-0 z-[10001] flex items-center justify-center p-4 pointer-events-none"
+               >
+                  <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-8 text-center pointer-events-auto">
+                     <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                     <h3 className="text-2xl font-bold text-[#90311e] mb-2">
+                        {t("sections.Products.successPopup.title")}
+                     </h3>
+                     <p className="text-gray-600 mb-6">
+                        {t("sections.Products.successPopup.message")}
+                     </p>
+                     <button
+                        onClick={onClose}
+                        className="w-full px-4 py-2 bg-[#90311e] text-white rounded-lg hover:bg-[#7a2818] transition font-semibold"
+                     >
+                        {t("sections.Products.successPopup.close")}
+                     </button>
+                  </div>
+               </motion.div>
+            </>
+         )}
+      </AnimatePresence>
+   );
+};
+
+// ============================================================
+// PRODUCTS COMPONENT
+// ============================================================
 const Products = () => {
    const { t, locale } = useI18n();
+   const [selectedProduct, setSelectedProduct] = useState(null);
+   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
+   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
    const products = t("sections.Products.products") || [];
    const featuredProduct = products.find((p) => p.featured) || products.find((p) => p.layout === "horizontal");
    const verticalProducts = products.filter((p) => p.layout === "vertical" && !p.featured);
@@ -78,6 +326,21 @@ const Products = () => {
             duration: 0.5,
          },
       },
+   };
+
+   const handleQuickBuy = (product) => {
+      setSelectedProduct(product);
+      setIsOrderModalOpen(true);
+   };
+
+   const handleOrderSubmit = () => {
+      setIsOrderModalOpen(false);
+      setIsSuccessPopupOpen(true);
+   };
+
+   const handleCloseOrderModal = () => {
+      setIsOrderModalOpen(false);
+      setSelectedProduct(null);
    };
 
    return (
@@ -169,7 +432,10 @@ const Products = () => {
                      />
 
                      {/* Quick Buy button */}
-                     <button className="absolute bottom-3 right-3 bg-gradient-to-r from-[#90311e] to-[#610C40] text-white px-4 py-2 rounded-lg font-semibold text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 transform hover:scale-105 shadow-xl">
+                     <button
+                        onClick={() => handleQuickBuy(product)}
+                        className="absolute bottom-3 right-3 bg-gradient-to-r from-[#90311e] to-[#610C40] text-white px-4 py-2 rounded-lg font-semibold text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 transform hover:scale-105 shadow-xl z-20"
+                     >
                         {t("sections.Products.quickBuy")}
                      </button>
                   </div>
@@ -269,7 +535,10 @@ const Products = () => {
                         />
 
                         {/* Quick Buy button */}
-                        <button className="absolute bottom-3 right-3 bg-gradient-to-r from-[#90311e] to-[#610C40] text-white px-4 py-2 rounded-lg font-semibold text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 transform hover:scale-105 shadow-xl">
+                        <button
+                           onClick={() => handleQuickBuy(product)}
+                           className="absolute bottom-3 right-3 bg-gradient-to-r from-[#90311e] to-[#610C40] text-white px-4 py-2 rounded-lg font-semibold text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 transform hover:scale-105 shadow-xl z-20"
+                        >
                            {t("sections.Products.quickBuy")}
                         </button>
                      </div>
@@ -323,6 +592,22 @@ const Products = () => {
                </motion.div>
             ))}
          </motion.div>
+
+         {/* Order Modal */}
+         <OrderModal
+            isOpen={isOrderModalOpen}
+            onClose={handleCloseOrderModal}
+            product={selectedProduct}
+            t={t}
+            onSuccess={() => setIsSuccessPopupOpen(true)}
+         />
+
+         {/* Success Popup */}
+         <SuccessPopup
+            isOpen={isSuccessPopupOpen}
+            onClose={() => setIsSuccessPopupOpen(false)}
+            t={t}
+         />
       </section>
    );
 };

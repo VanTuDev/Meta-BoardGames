@@ -16,6 +16,25 @@
       "material": "Materials"
    },
    "contactPrice": "Contact for price",
+   "orderModal": {
+      "title": "Quick Order",
+      "productName": "Product",
+      "customerName": "Customer Name",
+      "customerNamePlaceholder": "Enter your name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter phone number",
+      "facebook": "Facebook Link",
+      "facebookPlaceholder": "Enter Facebook link (optional)",
+      "confirm": "Confirm",
+      "cancel": "Cancel",
+      "required": "This field is required",
+      "invalidPhone": "Invalid phone number"
+   },
+   "successPopup": {
+      "title": "Order Successful",
+      "message": "We will contact you as soon as possible",
+      "close": "Close"
+   },
    "products": [
       {
          "id": 2,
