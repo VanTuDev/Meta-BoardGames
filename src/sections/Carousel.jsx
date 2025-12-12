@@ -64,16 +64,23 @@ const Carousel = () => {
                   },
                   speed: 800,
                },
+               2560: {
+                  // Ultrawide (2560x1080)
+                  autoplay: {
+                     delay: 6000,
+                  },
+                  speed: 800,
+               },
             }}
             className="rounded-none overflow-hidden w-full"
          >
             {/* Slide 1 */}
             <SwiperSlide>
-               <div className="relative w-full flex items-center justify-center bg-gray-100 h-[250px] xs:h-[280px] sm:h-[380px] md:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px]">
+               <div className="relative w-full flex items-center justify-center bg-gray-100 h-[250px] xs:h-[280px] sm:h-[380px] md:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px] [2560px]:h-[500px]">
                   <img
-                     src="/imgs/Carousel/banner.jpg"
-                     alt="Banner 1"
-                     className="w-full h-full object-contain object-center max-w-full max-h-full"
+                     src="/imgs/Carousel/bannermeta.png"
+                     alt="Banner M.ETA"
+                     className="w-full h-full object-cover sm:object-contain object-center max-w-full max-h-full"
                      loading="eager" // slide đầu tiên load ngay
                      fetchpriority="high"
                   />

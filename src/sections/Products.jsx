@@ -57,9 +57,9 @@ const PriceDisplay = ({ price, salePrice, salePercent, isVertical = false, t }) 
 // ============================================================
 const OrderModal = ({ isOpen, onClose, product, t, onSuccess }) => {
    const [formData, setFormData] = useState({
-      customerName: "",
-      phone: "",
-      facebook: ""
+      address: "",
+      quantity: "",
+      email: ""
    });
    const [errors, setErrors] = useState({});
 
@@ -72,26 +72,33 @@ const OrderModal = ({ isOpen, onClose, product, t, onSuccess }) => {
       }
    };
 
-   const validatePhone = (phone) => {
-      // Vietnamese phone number validation (10-11 digits, may start with 0 or +84)
-      const phoneRegex = /^(\+84|0)[0-9]{9,10}$/;
-      return phoneRegex.test(phone.replace(/\s/g, ""));
+   const validateEmail = (email) => {
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
    };
 
    const handleSubmit = (e) => {
       e.preventDefault();
       const newErrors = {};
 
-      // Validate customer name
-      if (!formData.customerName.trim()) {
-         newErrors.customerName = t("sections.Products.orderModal.required");
+      // Validate address
+      if (!formData.address.trim()) {
+         newErrors.address = t("sections.Products.orderModal.required");
       }
 
-      // Validate phone
-      if (!formData.phone.trim()) {
-         newErrors.phone = t("sections.Products.orderModal.required");
-      } else if (!validatePhone(formData.phone)) {
-         newErrors.phone = t("sections.Products.orderModal.invalidPhone");
+      // Validate quantity
+      if (!formData.quantity.trim()) {
+         newErrors.quantity = t("sections.Products.orderModal.required");
+      } else if (isNaN(formData.quantity) || parseInt(formData.quantity) <= 0) {
+         newErrors.quantity = t("sections.Products.orderModal.invalidQuantity");
+      }
+
+      // Validate email
+      if (!formData.email.trim()) {
+         newErrors.email = t("sections.Products.orderModal.required");
+      } else if (!validateEmail(formData.email)) {
+         newErrors.email = t("sections.Products.orderModal.invalidEmail");
       }
 
       if (Object.keys(newErrors).length > 0) {
@@ -103,7 +110,7 @@ const OrderModal = ({ isOpen, onClose, product, t, onSuccess }) => {
       console.log("Order submitted:", { product, ...formData });
 
       // Reset form
-      setFormData({ customerName: "", phone: "", facebook: "" });
+      setFormData({ address: "", quantity: "", email: "" });
       setErrors({});
 
       // Close modal
@@ -167,57 +174,62 @@ const OrderModal = ({ isOpen, onClose, product, t, onSuccess }) => {
 
                      {/* Form */}
                      <form onSubmit={handleSubmit} className="space-y-4">
-                        {/* Customer Name */}
+                        {/* Address */}
                         <div>
                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                              {t("sections.Products.orderModal.customerName")} <span className="text-red-500">*</span>
+                              {t("sections.Products.orderModal.address")} <span className="text-red-500">*</span>
                            </label>
                            <input
                               type="text"
-                              name="customerName"
-                              value={formData.customerName}
+                              name="address"
+                              value={formData.address}
                               onChange={handleChange}
-                              placeholder={t("sections.Products.orderModal.customerNamePlaceholder")}
-                              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#90311e] ${errors.customerName ? "border-red-500" : "border-gray-300"
+                              placeholder={t("sections.Products.orderModal.addressPlaceholder")}
+                              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#90311e] ${errors.address ? "border-red-500" : "border-gray-300"
                                  }`}
                            />
-                           {errors.customerName && (
-                              <p className="mt-1 text-sm text-red-500">{errors.customerName}</p>
+                           {errors.address && (
+                              <p className="mt-1 text-sm text-red-500">{errors.address}</p>
                            )}
                         </div>
 
-                        {/* Phone */}
+                        {/* Quantity */}
                         <div>
                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                              {t("sections.Products.orderModal.phone")} <span className="text-red-500">*</span>
+                              {t("sections.Products.orderModal.quantity")} <span className="text-red-500">*</span>
                            </label>
                            <input
-                              type="tel"
-                              name="phone"
-                              value={formData.phone}
+                              type="number"
+                              name="quantity"
+                              value={formData.quantity}
                               onChange={handleChange}
-                              placeholder={t("sections.Products.orderModal.phonePlaceholder")}
-                              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#90311e] ${errors.phone ? "border-red-500" : "border-gray-300"
+                              placeholder={t("sections.Products.orderModal.quantityPlaceholder")}
+                              min="1"
+                              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#90311e] ${errors.quantity ? "border-red-500" : "border-gray-300"
                                  }`}
                            />
-                           {errors.phone && (
-                              <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+                           {errors.quantity && (
+                              <p className="mt-1 text-sm text-red-500">{errors.quantity}</p>
                            )}
                         </div>
 
-                        {/* Facebook */}
+                        {/* Email */}
                         <div>
                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                              {t("sections.Products.orderModal.facebook")}
+                              {t("sections.Products.orderModal.email")} <span className="text-red-500">*</span>
                            </label>
                            <input
-                              type="url"
-                              name="facebook"
-                              value={formData.facebook}
+                              type="email"
+                              name="email"
+                              value={formData.email}
                               onChange={handleChange}
-                              placeholder={t("sections.Products.orderModal.facebookPlaceholder")}
-                              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#90311e]"
+                              placeholder={t("sections.Products.orderModal.emailPlaceholder")}
+                              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#90311e] ${errors.email ? "border-red-500" : "border-gray-300"
+                                 }`}
                            />
+                           {errors.email && (
+                              <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                           )}
                         </div>
 
                         {/* Buttons */}

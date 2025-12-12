@@ -19,16 +19,17 @@
    "orderModal": {
       "title": "Quick Order",
       "productName": "Product",
-      "customerName": "Customer Name",
-      "customerNamePlaceholder": "Enter your name",
-      "phone": "Phone Number",
-      "phonePlaceholder": "Enter phone number",
-      "facebook": "Facebook Link",
-      "facebookPlaceholder": "Enter Facebook link (optional)",
+      "address": "Delivery Address",
+      "addressPlaceholder": "Enter delivery address",
+      "quantity": "Quantity you want to buy",
+      "quantityPlaceholder": "Enter quantity",
+      "email": "Your Email",
+      "emailPlaceholder": "Enter your email",
       "confirm": "Confirm",
       "cancel": "Cancel",
       "required": "This field is required",
-      "invalidPhone": "Invalid phone number"
+      "invalidEmail": "Invalid email address",
+      "invalidQuantity": "Quantity must be greater than 0"
    },
    "successPopup": {
       "title": "Order Successful",
