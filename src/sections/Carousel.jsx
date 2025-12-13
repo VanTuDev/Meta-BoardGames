@@ -76,28 +76,16 @@ const Carousel = () => {
          >
             {/* Slide 1 */}
             <SwiperSlide>
-               <div className="relative w-full flex items-center justify-center bg-gray-100 h-[250px] xs:h-[280px] sm:h-[380px] md:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px] [2560px]:h-[500px]">
+               <div className="relative w-full aspect-[2560/1080] bg-gray-100 overflow-hidden">
                   <img
                      src="/imgs/Carousel/bannermeta.png"
                      alt="Banner M.ETA"
-                     className="w-full h-full object-cover sm:object-contain object-center max-w-full max-h-full"
-                     loading="eager" // slide đầu tiên load ngay
+                     className="w-full h-full object-cover"
+                     loading="eager"
                      fetchpriority="high"
                   />
                </div>
             </SwiperSlide>
-
-            {/* Slide 2 */}
-            {/* <SwiperSlide>
-               <div className="relative w-full flex items-center justify-center bg-gray-100 h-[250px] xs:h-[280px] sm:h-[380px] md:h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px]">
-                  <img
-                     src="/imgs/Carousel/CarouselBaner2.webp"
-                     alt="Banner 2"
-                     className="w-full h-full object-contain object-center max-w-full max-h-full"
-                     loading="lazy" // slide sau load lazy
-                  />
-               </div>
-            </SwiperSlide> */}
          </Swiper>
       </div>
    );
