@@ -1,50 +1,29 @@
 import React from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
-
-const blogs = [
-   {
-      id: 1,
-      title: "GỢI Ý NHỮNG SET QUÀ TẾT Ý NGHĨA CHO MÙA XUÂN NĂM NAY",
-      description:
-         "Tết Nguyên Đán là dịp để chúng ta bày tỏ sự tri ân và tình cảm với những người thân yêu, đồng nghiệp và đối tác...",
-      date: "17 Thg 1, 2024",
-      image: "/imgs/Blog/Blog1.webp",
-   },
-   {
-      id: 2,
-      title: "HƯỚNG DẪN CÁCH CHƠI BẦU CUA TRĂM TRẬN TRĂM THẮNG",
-      description:
-         "Trò chơi bầu cua tôm cá là một trò chơi truyền thống giải trí phổ biến ở Việt Nam vào các dịp lễ, đặc biệt là Tết Nguyên Đán...",
-      date: "15 Thg 1, 2024",
-      image: "/imgs/Blog/Blog2.webp",
-   },
-   {
-      id: 3,
-      title: "KHÁM PHÁ NIỀM VUI TẾT VỚI BỘ BẦU CUA Ý GIAO",
-      description:
-         "Ngày Tết là dịp để gia đình, bạn bè và người thân sum họp, chia sẻ niềm vui và ước nguyện cho năm mới...",
-      date: "12 Thg 1, 2024",
-      image: "/imgs/Blog/Blog3.webp",
-   },
-];
+import { useI18n } from "../i18n";
 
 const Blog = () => {
+   const { t } = useI18n();
+   const blogs = t("sections.Blog.blogs") || [];
+   const title = t("sections.Blog.title");
+   const viewAll = t("sections.Blog.viewAll");
+
    return (
       <section className="max-w-7xl mx-auto px-6 py-16">
          {/* Header */}
          <div className="flex justify-between items-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900">Blogs and News</h2>
+            <h2 className="text-3xl font-bold text-gray-900">{title}</h2>
             <a
                href="#"
                className="text-sm font-medium text-gray-700 flex items-center gap-1 hover:underline"
             >
-               View all →
+               {viewAll}
             </a>
          </div>
 
          {/* Blog Grid */}
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogs.map((blog) => (
+            {Array.isArray(blogs) && blogs.map((blog) => (
                <div
                   key={blog.id}
                   className="flex flex-col group cursor-pointer"

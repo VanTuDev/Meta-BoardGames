@@ -1,0 +1,12 @@
+{
+   "soldProducts": {
+      "label": "Products Sold"
+   },
+   "revenue": {
+      "label": "Revenue"
+   },
+   "customers": {
+      "label": "Customers"
+   }
+}
+

@@ -1,0 +1,12 @@
+{
+   "soldProducts": {
+      "label": "Số sản phẩm bán được"
+   },
+   "revenue": {
+      "label": "Số doanh thu"
+   },
+   "customers": {
+      "label": "Số khách hàng"
+   }
+}
+

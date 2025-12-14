@@ -19,6 +19,7 @@
    "orderModal": {
       "title": "Đặt hàng nhanh",
       "productName": "Sản phẩm",
+      "close": "Đóng",
       "address": "Địa chỉ nhận hàng",
       "addressPlaceholder": "Nhập địa chỉ nhận hàng",
       "quantity": "Số lượng sản phẩm bạn muốn mua",

@@ -1,0 +1,28 @@
+{
+   "title": "Blogs and News",
+   "viewAll": "View all →",
+   "blogs": [
+      {
+         "id": 1,
+         "title": "M.ETA Officially Launches HUYỀN HOÀNG Product Line",
+         "description": "A new step in the journey of telling history through experience. M.ETA marks its first milestone with a project connected to real heritage.",
+         "date": "01/11/2025",
+         "image": "/imgs/Blog/blog1.jpg"
+      },
+      {
+         "id": 2,
+         "title": "What is HUYỀN HOÀNG in M.ETA's World?",
+         "description": "HUYỀN HOÀNG is the first project M.ETA uses to answer its big question. Whether Vietnamese history can be retold through experience.",
+         "date": "30/11/2025",
+         "image": "/imgs/Blog/blog2.jpg"
+      },
+      {
+         "id": 3,
+         "title": "M.ETA and the Question: What Do Young People Need from History?",
+         "description": "We don't try to teach history. M.ETA creates experiences compelling enough for young people to actively want to learn.",
+         "date": "12/12/2025",
+         "image": "/imgs/Blog/blog3.jpg"
+      }
+   ]
+}
+

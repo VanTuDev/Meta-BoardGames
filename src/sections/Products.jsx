@@ -18,7 +18,7 @@ const PriceDisplay = ({ price, salePrice, salePercent, isVertical = false, t }) 
       return (
          <div className={`${isVertical ? 'mt-2' : 'mt-3'}`}>
             <span className="text-base sm:text-lg font-semibold text-gray-600 italic">
-               {t("sections.Products.contactPrice") || "Liên hệ để biết giá"}
+               {t("sections.Products.contactPrice")}
             </span>
          </div>
       );
@@ -154,7 +154,7 @@ const OrderModal = ({ isOpen, onClose, product, t, onSuccess }) => {
                         <button
                            onClick={onClose}
                            className="p-2 rounded-full hover:bg-gray-100 transition"
-                           aria-label="Close"
+                           aria-label={t("sections.Products.orderModal.close")}
                         >
                            <X className="w-5 h-5 text-gray-600" />
                         </button>
@@ -366,7 +366,7 @@ const Products = () => {
             className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-3"
          >
             <div className="max-w-xl">
-               <h2 className="text-2xl py-3 bg-red-200 sm:text-3xl md:text-4xl font-bold text-gray-900 bg-gradient-to-r from-[#90311e] to-[#610C40] bg-clip-text text-transparent">
+               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 bg-gradient-to-r from-[#90311e] to-[#610C40] bg-clip-text text-transparent">
                   {t("sections.Products.title")}
                </h2>
                <p className="text-sm sm:text-base text-gray-600 italic">
@@ -485,12 +485,8 @@ const Products = () => {
                      />
 
                      {/* Description */}
-                     <p className="text-xs bg-white sm:text-sm text-gray-700 leading-relaxed mb-3 mt-3 line-clamp-3">
-                        <span className="bg-red-200">
-                           <span className="bg-white">
-                              {product.description}
-                           </span>
-                        </span>
+                     <p className="text-xs sm:text-sm text-gray-700 leading-relaxed mb-3 mt-3 line-clamp-3">
+                        {product.description}
                      </p>
 
                      {/* Material */}

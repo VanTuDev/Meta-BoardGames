@@ -1,0 +1,28 @@
+{
+   "title": "Blogs and News",
+   "viewAll": "Xem tất cả →",
+   "blogs": [
+      {
+         "id": 1,
+         "title": "M.ETA chính thức ra mắt dòng sản phẩm HUYỀN HOÀNG",
+         "description": "Một bước đi mới trong hành trình kể chuyện lịch sử bằng trải nghiệm. M.ETA đánh dấu cột mốc đầu tiên bằng một dự án gắn với di sản thật.",
+         "date": "01/11/2025",
+         "image": "/imgs/Blog/blog1.jpg"
+      },
+      {
+         "id": 2,
+         "title": "HUYỀN HOÀNG là gì trong thế giới của M.ETA?",
+         "description": "HUYỀN HOÀNG là dự án đầu tiên M.ETA dùng để trả lời câu hỏi lớn của mình. Rằng lịch sử Việt Nam có thể được kể lại bằng trải nghiệm hay không.",
+         "date": "30/11/2025",
+         "image": "/imgs/Blog/blog2.jpg"
+      },
+      {
+         "id": 3,
+         "title": "M.ETA và câu hỏi: người trẻ cần gì từ lịch sử?",
+         "description": "Chúng tôi không cố gắng dạy lịch sử. M.ETA tạo ra những trải nghiệm đủ hấp dẫn để người trẻ chủ động muốn tìm hiểu.",
+         "date": "12/12/2025",
+         "image": "/imgs/Blog/blog3.jpg"
+      }
+   ]
+}
+

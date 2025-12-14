@@ -3,7 +3,8 @@ import Header from "./components/Header.jsx";
 import Carousel from "./sections/Carousel.jsx";
 import Products from "./sections/Products.jsx";
 import Collections from "./sections/Collections.jsx";
-import Benefits from "./sections/Benefits.jsx";
+// import Benefits from "./sections/Benefits.jsx";
+import StaticMeta from "./sections/StaticMeta.jsx";
 import MarqueeText from "./sections/MarqueeText.jsx";
 import HeroParallax from "./sections/HeroParallax.jsx";
 import Blog from "./sections/Blog.jsx";
@@ -22,7 +23,8 @@ function App() {
         <div className="p-0">
           <Collections />
         </div>
-        <Benefits />
+        {/* <Benefits /> */}
+        <StaticMeta />
         <MarqueeText />
         <HeroParallax />
         <Blog />

@@ -19,6 +19,7 @@
    "orderModal": {
       "title": "Quick Order",
       "productName": "Product",
+      "close": "Close",
       "address": "Delivery Address",
       "addressPlaceholder": "Enter delivery address",
       "quantity": "Quantity you want to buy",
