@@ -7,7 +7,7 @@ const StaticMeta = () => {
    const [revenue, setRevenue] = useState(0);
    const [customers, setCustomers] = useState(0);
 
-   const targetSoldProducts = 42;
+   const targetSoldProducts = 43;
    const targetRevenue = 9654000;
    const targetCustomers = 39;
    const duration = 8000; // 8 giây
